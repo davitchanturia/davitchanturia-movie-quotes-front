@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 import Language from '../components/Language';
 
-const Main = () => {
+const Main = (props) => {
   return (
     <section>
       <div className='w-2/4 h-screen m-auto justify-center align-middle'>
@@ -12,16 +12,16 @@ const Main = () => {
             alt=''
             src='https://see.news/wp-content/uploads/2021/04/friends.jpg'
           />
-          <div class='pt-9'>
+          <div className='pt-9'>
             <h1 className='text-center text-white text-xl capitalize'>
-              "quote text"
+              {props.data.quote.name.en}
             </h1>
 
             <Link
               className='block text-center text-white mt-10 underline capitalize'
               to='/quotes'
             >
-              movie link
+              {props.data.movie.name.en}
             </Link>
           </div>
         </div>
