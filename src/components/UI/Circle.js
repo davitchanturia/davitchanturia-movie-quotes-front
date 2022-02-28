@@ -1,5 +1,4 @@
 import i18n from 'i18next';
-import { Link } from 'react-router-dom';
 
 const Circle = (props) => {
   const changeLanguageHandler = (event) => {

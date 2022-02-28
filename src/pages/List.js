@@ -20,7 +20,7 @@ const List = (props) => {
           {props.data.movie.name[i18n.language]}
         </h1>
         {allQuotes.map((quote) => (
-          <Card title={quote.name[i18n.language]} />
+          <Card key={quote.id} title={quote.name[i18n.language]} />
         ))}
       </div>
       <Language />
