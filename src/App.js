@@ -22,6 +22,7 @@ function App() {
       .then(function (response) {
         setMovie(response.data);
         setIsLoading(false);
+        i18n.changeLanguage('en');
       });
   }, []);
 
