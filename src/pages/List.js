@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import Language from '../components/Language';
 import Card from '../components/UI/Card';
 
-const List = () => {
+const List = (props) => {
   const { t, i18n } = useTranslation();
+
+  const allQuotes = props.data.allQuotes;
 
   return (
     <section>
@@ -14,8 +16,12 @@ const List = () => {
         </Link>
       </div>
       <div className='max-w-md  m-auto'>
-        <h1 className='mt-10 capitalize text-white'> movie name </h1>
-        <Card />
+        <h1 className='mt-10 capitalize text-white'>
+          {props.data.movie.name[i18n.language]}
+        </h1>
+        {allQuotes.map((quote) => (
+          <Card title={quote.name[i18n.language]} />
+        ))}
       </div>
       <Language />
     </section>

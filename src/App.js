@@ -22,10 +22,17 @@ function App() {
   }, []);
 
   return (
-    <Routes>
-      {!isEmpty && <Route path='/' element={<Main data={movie} />} />}
-      <Route path='/quotes' element={<List />} />
-    </Routes>
+    <>
+      {isEmpty && (
+        <p className='text-white text-lg text-center mt-32'>
+          something went wrong, try another time!
+        </p>
+      )}
+      <Routes>
+        {!isEmpty && <Route path='/' element={<Main data={movie} />} />}
+        <Route path='/quotes' element={<List data={movie} />} />
+      </Routes>
+    </>
   );
 }
 
