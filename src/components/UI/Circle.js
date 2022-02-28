@@ -7,11 +7,16 @@ const Circle = (props) => {
     i18n.changeLanguage(props.lang);
   };
 
+  const styles =
+    'rounded-full h-10 w-10 m-2 text-white border border-white flex items-center justify-center circle';
+
+  const classes =
+    i18n.language === props.lang
+      ? `${styles} bg-white text-black`
+      : `${styles}`;
+
   return (
-    <div
-      className='rounded-full h-10 w-10 m-2 text-white border border-white flex items-center justify-center circle 
-           hover:bg-white hover:text-black'
-    >
+    <div className={classes}>
       <button className='cursor-pointer' onClick={changeLanguageHandler}>
         {props.lang}
       </button>

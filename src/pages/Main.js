@@ -4,7 +4,6 @@ import i18n from 'i18next';
 import Language from '../components/Language';
 
 const Main = (props) => {
-  let currentLang = `${props.data.movie.name}[${i18n.language}]`;
   return (
     <section>
       <div className='w-2/4 h-screen m-auto justify-center align-middle'>
