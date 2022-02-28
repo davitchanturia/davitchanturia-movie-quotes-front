@@ -1,11 +1,15 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router';
+import { useTranslation } from 'react-i18next';
+
 import List from './pages/List';
 import Main from './pages/Main';
 
 function App() {
   const [movie, setMovie] = useState({});
+
+  const { t, i18n } = useTranslation();
 
   let isEmpty = Object.entries(movie).length === 0;
 
