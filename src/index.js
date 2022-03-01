@@ -8,7 +8,7 @@ import App from './App';
 import './i18n/i18n';
 
 ReactDOM.render(
-  <Suspense fallback={<div>Loading...</div>}>
+  <Suspense fallback={'.'}>
     <BrowserRouter>
       <App />
     </BrowserRouter>
