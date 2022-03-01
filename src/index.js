@@ -6,12 +6,15 @@ import './index.css';
 import App from './App';
 
 import './i18n/i18n';
+import { AdminContextProvider } from './store/admin-context';
 
 ReactDOM.render(
-  <Suspense fallback={'.'}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </Suspense>,
+  <AdminContextProvider>
+    <Suspense fallback={'.'}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Suspense>
+  </AdminContextProvider>,
   document.getElementById('root')
 );

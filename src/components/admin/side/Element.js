@@ -1,6 +1,11 @@
+import { useContext } from 'react';
+import AdminContext from '../../../store/admin-context';
+
 const Element = (props) => {
+  const adminCtx = useContext(AdminContext);
+
   const TextStyles =
-    'group flex items-center w-56 px-2 py-2 text-base font-medium rounded-md text-white';
+    'group flex items-center w-72 px-2 py-2 text-base font-medium rounded-md text-white';
 
   const SvgStyles = 'mr-4 flex-shrink-0 h-6 w-6';
 
@@ -15,7 +20,7 @@ const Element = (props) => {
       : `${SvgStyles} text-black`;
 
   const onfocusHandler = () => {
-    props.onFocus(props.title);
+    adminCtx.onChangeActivePage(props.title);
   };
 
   return (
