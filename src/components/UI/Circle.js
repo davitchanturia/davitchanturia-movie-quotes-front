@@ -7,7 +7,7 @@ const Circle = (props) => {
   };
 
   const styles =
-    'rounded-full h-10 w-10 m-2 text-white border border-white flex items-center justify-center circle';
+    'rounded-full transition-all h-10 w-10 m-2 text-white border border-white flex items-center justify-center circle';
 
   const classes =
     i18n.language === props.lang

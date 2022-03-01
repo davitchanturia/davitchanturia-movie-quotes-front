@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next';
 
 import List from './pages/List';
 import Main from './pages/Main';
+import AdminPanel from './pages/AdminPanel';
+
 import Spinner from './components/UI/Spinner';
 import useApi from './hooks/use-api';
 
@@ -30,6 +32,7 @@ function App() {
       <Routes>
         {!isEmpty && <Route path='/' element={<Main data={movie} />} />}
         {!isEmpty && <Route path='/quotes' element={<List data={movie} />} />}
+        <Route path='/admin' element={<AdminPanel />} />
       </Routes>
     </>
   );
