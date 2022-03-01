@@ -3,10 +3,10 @@ import SideBar from '../components/admin/SideBar';
 
 const AdminPanel = () => {
   return (
-    <>
+    <div className='w-full h-screen bg-gray-100'>
       <Navbar />
       <SideBar />
-    </>
+    </div>
   );
 };
 
