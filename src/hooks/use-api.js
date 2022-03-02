@@ -22,6 +22,7 @@ const useApi = () => {
             if (!response.data) {
               throw new Error('Something went wrong');
             }
+            console.log(response.data);
             dataCtx.onGetData(response.data);
             setIsLoading(false);
             i18n.changeLanguage('en');
