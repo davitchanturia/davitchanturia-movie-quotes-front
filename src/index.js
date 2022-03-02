@@ -7,14 +7,17 @@ import App from './App';
 
 import './i18n/i18n';
 import { AdminContextProvider } from './store/admin-context';
+import { DataContextProvider } from './store/data-context';
 
 ReactDOM.render(
-  <AdminContextProvider>
-    <Suspense fallback={'.'}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </Suspense>
-  </AdminContextProvider>,
+  <DataContextProvider>
+    <AdminContextProvider>
+      <Suspense fallback={'.'}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </Suspense>
+    </AdminContextProvider>
+  </DataContextProvider>,
   document.getElementById('root')
 );

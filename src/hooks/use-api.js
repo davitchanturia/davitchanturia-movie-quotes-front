@@ -1,12 +1,14 @@
 import axios from 'axios';
 import { useTranslation } from 'react-i18next';
 
-import { useCallback, useState } from 'react';
+import { useCallback, useState, useContext } from 'react';
+import DataContext from '../store/data-context';
 
 const useApi = () => {
-  const [movie, setMovie] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState();
+
+  const dataCtx = useContext(DataContext);
 
   const { t, i18n } = useTranslation();
 
@@ -20,7 +22,7 @@ const useApi = () => {
             if (!response.data) {
               throw new Error('Something went wrong');
             }
-            setMovie(response.data);
+            dataCtx.onGetData(response.data);
             setIsLoading(false);
             i18n.changeLanguage('en');
           })
@@ -34,7 +36,6 @@ const useApi = () => {
   );
 
   return {
-    movie,
     isLoading,
     error,
     sendRequest,

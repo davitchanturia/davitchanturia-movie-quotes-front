@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 import { Route, Routes } from 'react-router';
 import { useTranslation } from 'react-i18next';
 
@@ -8,18 +8,21 @@ import AdminPanel from './pages/AdminPanel';
 
 import Spinner from './components/UI/Spinner';
 import useApi from './hooks/use-api';
+import DataContext from './store/data-context';
 
 function App() {
   const { t, i18n } = useTranslation();
 
+  const dataCtx = useContext(DataContext);
+
   const httpData = useApi('main');
-  const { movie, isLoading, error, sendRequest } = httpData;
+  const { isLoading, error, sendRequest } = httpData;
 
   useEffect(() => {
     sendRequest('getData');
   }, [sendRequest]);
 
-  let isEmpty = Object.entries(movie).length === 0;
+  let isEmpty = Object.entries(dataCtx.movie).length === 0;
 
   return (
     <>
@@ -30,8 +33,10 @@ function App() {
         </p>
       )}
       <Routes>
-        {!isEmpty && <Route path='/' element={<Main data={movie} />} />}
-        {!isEmpty && <Route path='/quotes' element={<List data={movie} />} />}
+        {!isEmpty && <Route path='/' element={<Main data={dataCtx.movie} />} />}
+        {!isEmpty && (
+          <Route path='/quotes' element={<List data={dataCtx.movie} />} />
+        )}
         <Route path='/admin' element={<AdminPanel />} />
       </Routes>
     </>
