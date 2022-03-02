@@ -5,7 +5,7 @@ const Element = (props) => {
   const adminCtx = useContext(AdminContext);
 
   const TextStyles =
-    'group flex items-center w-72 px-2 py-2 text-base font-medium rounded-md text-white';
+    'group flex items-center w-72 px-2 py-2 text-base font-medium rounded-md text-white transition-all duration-500';
 
   const SvgStyles = 'mr-4 flex-shrink-0 h-6 w-6';
 

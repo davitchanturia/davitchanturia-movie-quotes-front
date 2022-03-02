@@ -1,4 +1,4 @@
-const Home = () => {
+const Welcome = () => {
   return (
     <div>
       <p className='text-center text-slate-900 text-6xl mt-12'>Welcome back</p>
@@ -6,4 +6,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Welcome;

@@ -1,4 +1,4 @@
-import Home from '../components/admin/content/Home';
+import Data from '../components/admin/Data';
 import Navbar from '../components/admin/Navbar';
 import SideBar from '../components/admin/SideBar';
 
@@ -8,9 +8,7 @@ const AdminPanel = () => {
       <Navbar />
       <div className='flex'>
         <SideBar />
-        <div className='bg-green-900 w-5/6 mr-20 p-7'>
-          <Home />
-        </div>
+        <Data />
       </div>
     </div>
   );
