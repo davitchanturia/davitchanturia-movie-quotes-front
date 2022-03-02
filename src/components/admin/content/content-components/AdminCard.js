@@ -1,5 +1,6 @@
 const AdminCard = (props) => {
-  const quote = props.movieOrQuote === 'Quote' ? true : false;
+  const quote = props.movieOrQuote === 'Quotes' ? true : false;
+
   return (
     <div className=' col-span-1 flex flex-col text-center bg-white rounded-lg shadow'>
       <div className='flex-1 flex flex-col p-8'>

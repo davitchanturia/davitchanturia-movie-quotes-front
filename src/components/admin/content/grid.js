@@ -30,7 +30,7 @@ const Grid = () => {
           <AdminCard key={file.id} info={file} movieOrQuote={adminCtx.active} />
         ))}
       </div>
-      <Modal></Modal>
+      {/* <Modal></Modal> */}
     </>
   );
 };
