@@ -8,7 +8,10 @@ const Modal = (props) => {
       role='dialog'
       aria-modal='true'
     >
-      <div className='flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0'>
+      <div
+        id='modal-child'
+        className='flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0'
+      >
         <div
           className='fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity'
           aria-hidden='true'
@@ -21,18 +24,17 @@ const Modal = (props) => {
           &#8203;
         </span>
 
-        <div className='relative inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6'>
-          {props.children}
-        </div>
+        {props.children}
       </div>
     </div>
   );
 };
 
-const modalPortal = () => {
-  return (
-    <>{ReactDOM.createPortal(<Modal />, document.querySelector('#modal'))}</>
-  );
-};
+export default Modal;
+// const modalPortal = () => {
+//   return (
+//     <>{ReactDOM.createPortal(<Modal />, document.querySelector('#modal'))}</>
+//   );
+// };
 
-export default modalPortal;
+// export default modalPortal;

@@ -1,8 +1,10 @@
 import { useContext } from 'react';
 import AdminContext from '../../../store/admin-context';
+import ModalContext from '../../../store/modal-context';
 
 const Element = (props) => {
   const adminCtx = useContext(AdminContext);
+  const modalCtx = useContext(ModalContext);
 
   const TextStyles =
     'group flex items-center w-72 px-2 py-2 text-base font-medium rounded-md text-white transition-all duration-500';
@@ -20,7 +22,11 @@ const Element = (props) => {
       : `${SvgStyles} text-black`;
 
   const onfocusHandler = () => {
-    adminCtx.onChangeActivePage(props.title);
+    if (props.title === 'Log out') {
+      modalCtx.onChangeActivePage(true);
+    } else {
+      adminCtx.onChangeActivePage(props.title);
+    }
   };
 
   return (
