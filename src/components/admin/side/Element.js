@@ -23,7 +23,7 @@ const Element = (props) => {
 
   const onfocusHandler = () => {
     if (props.title === 'Log out') {
-      modalCtx.onChangeActivePage(true);
+      modalCtx.onChangeLogout(true);
     } else {
       adminCtx.onChangeActivePage(props.title);
     }

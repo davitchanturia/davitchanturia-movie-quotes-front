@@ -6,7 +6,7 @@ import ModalContext from '../../../store/modal-context';
 
 import AdminCard from './content-components/AdminCard';
 import CreateButton from './content-components/CreateButton';
-import LogoutModal from '../modals/LogoutModal';
+import ConfirmModal from '../modals/ConfirmModal';
 
 const Grid = () => {
   const dataCtx = useContext(DataContext);
@@ -24,7 +24,8 @@ const Grid = () => {
   }
 
   const onCloseHandler = () => {
-    modalCtx.onChangeActivePage(false);
+    modalCtx.onChangeLogout(false);
+    modalCtx.onChangeDelete(false);
   };
 
   return (
@@ -38,7 +39,12 @@ const Grid = () => {
           <AdminCard key={file.id} info={file} movieOrQuote={adminCtx.active} />
         ))}
       </div>
-      {modalCtx.isOpen && <LogoutModal onClose={onCloseHandler} />}
+      {modalCtx.isOpenLogout && (
+        <ConfirmModal for='logout' onClose={onCloseHandler} />
+      )}
+      {modalCtx.isOpenDelete && (
+        <ConfirmModal for='delete' onClose={onCloseHandler} />
+      )}
     </>
   );
 };

@@ -1,5 +1,14 @@
+import { useContext } from 'react';
+import ModalContext from '../../../../store/modal-context';
+
 const AdminCard = (props) => {
+  const modalCtx = useContext(ModalContext);
+
   const quote = props.movieOrQuote === 'Quotes' ? true : false;
+
+  const onDeleteHandler = () => {
+    modalCtx.onChangeDelete(true);
+  };
 
   return (
     <div className=' col-span-1 flex flex-col text-center bg-white rounded-lg shadow'>
@@ -18,9 +27,15 @@ const AdminCard = (props) => {
           </h1>
         )}
       </div>
-      <div>
-        <div className='py-2 capitalize cursor-pointer text-green-800 text-xs font-medium bg-green-100 rounded-br-lg rounded-bl-lg'>
+      <div className='flex rounded-lg'>
+        <div className='w-1/2 py-2 capitalize cursor-pointer text-green-800 text-xs font-medium bg-green-200'>
           edit
+        </div>
+        <div
+          onClick={onDeleteHandler}
+          className='w-1/2 py-2 capitalize cursor-pointer text-slate-900 text-xs font-medium bg-slate-200'
+        >
+          delete
         </div>
       </div>
     </div>
