@@ -7,6 +7,8 @@ import ModalContext from '../../../store/modal-context';
 import AdminCard from './content-components/AdminCard';
 import CreateButton from './content-components/CreateButton';
 import ConfirmModal from '../modals/ConfirmModal';
+import MovieModal from '../modals/MovieModal';
+import QuoteModal from '../modals/QuoteModal';
 
 const Grid = () => {
   const dataCtx = useContext(DataContext);
@@ -26,12 +28,23 @@ const Grid = () => {
   const onCloseHandler = () => {
     modalCtx.onChangeLogout(false);
     modalCtx.onChangeDelete(false);
+    modalCtx.onChangeMovieCreate(false);
+    modalCtx.onChangeQuoteCreate(false);
+  };
+
+  const showCreateHandler = () => {
+    if (adminCtx.active === 'Movies') {
+      modalCtx.onChangeMovieCreate(true);
+    }
+    if (adminCtx.active === 'Quotes') {
+      modalCtx.onChangeQuoteCreate(true);
+    }
   };
 
   return (
     <>
       <div>
-        <CreateButton />
+        <CreateButton onCreate={showCreateHandler} />
       </div>
 
       <div className='grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-6'>
@@ -44,6 +57,12 @@ const Grid = () => {
       )}
       {modalCtx.isOpenDelete && (
         <ConfirmModal for='delete' onClose={onCloseHandler} />
+      )}
+      {modalCtx.isOpenCreateMovie && (
+        <MovieModal for='create' onClose={onCloseHandler} />
+      )}
+      {modalCtx.isOpenCreateQuote && (
+        <QuoteModal for='create' onClose={onCloseHandler} />
       )}
     </>
   );

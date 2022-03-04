@@ -2,16 +2,16 @@ import React, { useState } from 'react';
 
 const ModalContext = React.createContext({
   isOpenLogout: false,
-  isOpenDelete: false,
-  isOpenCreateMovie: false,
-  isOpenCreateQuote: false,
-  isOpenEditMovie: false,
-  isOpenEditQuote: false,
   onChangeLogout: (status) => {},
+  isOpenDelete: false,
   onChangeDelete: (status) => {},
+  isOpenCreateMovie: false,
   onChangeMovieCreate: (status) => {},
+  isOpenCreateQuote: false,
   onChangeQuoteCreate: (status) => {},
+  isOpenEditMovie: false,
   onChangeMovieEdit: (status) => {},
+  isOpenEditQuote: false,
   onChangeQuoteEdit: (status) => {},
 });
 
