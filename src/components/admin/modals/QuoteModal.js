@@ -9,19 +9,40 @@ import Modal from '../../UI/Modal';
 const QuoteModal = (props) => {
   const dataCtx = useContext(DataContext);
 
-  let value = { en: 'en', ka: 'ka' };
+  let value = { en: '', ka: '' };
+  let check = { checkedMovie: {}, moviesWithoutChecked: [], Movies: [] };
 
   if (props.for === 'edit') {
+    //for edit modal we need modified data
+
+    // previous values for inputs
     value.en = props.val.name.en;
     value.ka = props.val.name.ka;
+
+    //active movie
+    check.checkedMovie = dataCtx.movie.allMovies.filter(
+      (movie) => movie.id == props.val.movie_id
+    );
+
+    //filter array without active movie
+    check.moviesWithoutChecked = dataCtx.movie.allMovies.filter(
+      (movie) => movie.id !== check.checkedMovie[0].id
+    );
+
+    // array without active movie
+    check.Movies = check.moviesWithoutChecked.map((movie) => {
+      return <option key={movie.id}>{movie.name.en}</option>;
+    });
   } else {
+    //clean values for inputs when create
     value.en = '';
     value.ka = '';
-  }
 
-  const allMovies = dataCtx.movie.allMovies.map((movie) => {
-    return <option key={movie.id}>{movie.name.en}</option>;
-  });
+    //for create modal we fetching all movies
+    check.Movies = dataCtx.movie.allMovies.map((movie) => {
+      return <option key={movie.id}>{movie.name.en}</option>;
+    });
+  }
 
   return (
     <Modal>
@@ -32,8 +53,16 @@ const QuoteModal = (props) => {
               <Input title='quote name - english' value={value.en} />
               <Input title='quote name - georgian' value={value.ka} />
               <UploadInput />
-              <select className='mt-4 bg-slate-300 text-slate-900 block w-full p-2 rounded-md'>
-                {allMovies}
+              <select
+                name='movie_id'
+                className='mt-4 bg-slate-300  block w-full p-2 rounded-md'
+              >
+                {props.for === 'edit' && (
+                  <option id={check.checkedMovie[0].id}>
+                    {check.checkedMovie[0].name.en}
+                  </option>
+                )}
+                {check.Movies}
               </select>
               <Buttons action='create' onCancel={props.onClose} />
             </div>

@@ -89,12 +89,6 @@ const Grid = () => {
           val={editData}
         />
       )}
-      {/* {modalCtx.isOpenEditMovie && (
-        <MovieModal for='create' onClose={onCloseHandler} val={editData} />
-      )}
-      {modalCtx.isOpenEditQuote && (
-        <QuoteModal for='create' onClose={onCloseHandler} val={editData} />
-      )} */}
     </>
   );
 };
