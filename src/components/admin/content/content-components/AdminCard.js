@@ -10,6 +10,16 @@ const AdminCard = (props) => {
     modalCtx.onChangeDelete(true);
   };
 
+  const onEditHandler = (id) => {
+    if (quote) {
+      modalCtx.onChangeQuoteCreate(true);
+      props.ShowDataOnEdit(id, 'edit');
+    } else {
+      modalCtx.onChangeMovieCreate(true);
+      props.ShowDataOnEdit(id, 'edit');
+    }
+  };
+
   return (
     <div className=' col-span-1 flex flex-col text-center bg-white rounded-lg shadow'>
       <div className='flex-1 flex flex-col p-8'>
@@ -28,7 +38,10 @@ const AdminCard = (props) => {
         )}
       </div>
       <div className='flex rounded-lg'>
-        <div className='w-1/2 py-2 capitalize cursor-pointer text-green-800 text-xs font-medium bg-green-200'>
+        <div
+          onClick={onEditHandler.bind(null, props.info.id)}
+          className='w-1/2 py-2 capitalize cursor-pointer text-green-800 text-xs font-medium bg-green-200'
+        >
           edit
         </div>
         <div

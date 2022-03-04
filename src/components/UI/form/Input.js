@@ -8,6 +8,7 @@ const Input = (props) => {
         {props.title}
       </label>
       <input
+        defaultValue={props.value}
         type='text'
         name='first-name'
         id='first-name'

@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 
 import DataContext from '../../../store/data-context';
 import AdminContext from '../../../store/admin-context';
@@ -11,6 +11,9 @@ import MovieModal from '../modals/MovieModal';
 import QuoteModal from '../modals/QuoteModal';
 
 const Grid = () => {
+  const [editData, setEditData] = useState({});
+  const [createOrEdit, setCreateOrEdit] = useState('create');
+
   const dataCtx = useContext(DataContext);
   const adminCtx = useContext(AdminContext);
   const modalCtx = useContext(ModalContext);
@@ -39,6 +42,15 @@ const Grid = () => {
     if (adminCtx.active === 'Quotes') {
       modalCtx.onChangeQuoteCreate(true);
     }
+    setCreateOrEdit('create');
+  };
+
+  //we are getting relevant data from admin card component after user clickes edit button
+  // and it will be forwarded into modal
+  const returnData = (id, type) => {
+    const result = data.find((el) => el.id === id);
+    setEditData(result);
+    setCreateOrEdit('edit');
   };
 
   return (
@@ -49,7 +61,12 @@ const Grid = () => {
 
       <div className='grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-6'>
         {data.map((file) => (
-          <AdminCard key={file.id} info={file} movieOrQuote={adminCtx.active} />
+          <AdminCard
+            key={file.id}
+            info={file}
+            movieOrQuote={adminCtx.active}
+            ShowDataOnEdit={returnData}
+          />
         ))}
       </div>
       {modalCtx.isOpenLogout && (
@@ -59,11 +76,25 @@ const Grid = () => {
         <ConfirmModal for='delete' onClose={onCloseHandler} />
       )}
       {modalCtx.isOpenCreateMovie && (
-        <MovieModal for='create' onClose={onCloseHandler} />
+        <MovieModal
+          for={createOrEdit}
+          onClose={onCloseHandler}
+          val={editData}
+        />
       )}
       {modalCtx.isOpenCreateQuote && (
-        <QuoteModal for='create' onClose={onCloseHandler} />
+        <QuoteModal
+          for={createOrEdit}
+          onClose={onCloseHandler}
+          val={editData}
+        />
       )}
+      {/* {modalCtx.isOpenEditMovie && (
+        <MovieModal for='create' onClose={onCloseHandler} val={editData} />
+      )}
+      {modalCtx.isOpenEditQuote && (
+        <QuoteModal for='create' onClose={onCloseHandler} val={editData} />
+      )} */}
     </>
   );
 };

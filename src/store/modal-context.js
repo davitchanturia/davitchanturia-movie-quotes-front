@@ -9,10 +9,6 @@ const ModalContext = React.createContext({
   onChangeMovieCreate: (status) => {},
   isOpenCreateQuote: false,
   onChangeQuoteCreate: (status) => {},
-  isOpenEditMovie: false,
-  onChangeMovieEdit: (status) => {},
-  isOpenEditQuote: false,
-  onChangeQuoteEdit: (status) => {},
 });
 
 export const ModalContextProvider = (props) => {
@@ -20,8 +16,6 @@ export const ModalContextProvider = (props) => {
   const [isOpenDelete, setIsOpenDelete] = useState(false);
   const [isOpenCreateMovie, setIsOpenCreateMovie] = useState(false);
   const [isOpenCreateQuote, setIsOpenCreateQuote] = useState(false);
-  const [isOpenEditMovie, setIsOpenEditMovie] = useState(false);
-  const [isOpenEditQuote, setIsOpenEditQuote] = useState(false);
 
   const changeLogoutStatusHandler = (status) => {
     setIsOpenLogout(status);
@@ -39,14 +33,6 @@ export const ModalContextProvider = (props) => {
     setIsOpenCreateQuote(status);
   };
 
-  const changeEditMovieStatusHandler = (status) => {
-    setIsOpenEditMovie(status);
-  };
-
-  const changeEditQuoteStatusHandler = (status) => {
-    setIsOpenEditQuote(status);
-  };
-
   return (
     <ModalContext.Provider
       value={{
@@ -54,14 +40,10 @@ export const ModalContextProvider = (props) => {
         isOpenDelete: isOpenDelete,
         isOpenCreateMovie: isOpenCreateMovie,
         isOpenCreateQuote: isOpenCreateQuote,
-        isOpenEditMovie: isOpenEditMovie,
-        isOpenEditQuote: isOpenEditQuote,
         onChangeLogout: changeLogoutStatusHandler,
         onChangeDelete: changeDeleteStatusHandler,
         onChangeMovieCreate: changeCreateMovieStatusHandler,
         onChangeQuoteCreate: changeCreateQuoteStatusHandler,
-        onChangeMovieEdit: changeEditMovieStatusHandler,
-        onChangeQuoteEdit: changeEditQuoteStatusHandler,
       }}
     >
       {props.children}
