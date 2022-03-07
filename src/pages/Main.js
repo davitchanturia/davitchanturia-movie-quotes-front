@@ -1,3 +1,5 @@
+import { Trans } from 'react-i18next';
+
 import { Link } from 'react-router-dom';
 import i18n from 'i18next';
 
@@ -6,6 +8,11 @@ import Language from '../components/Language';
 const Main = (props) => {
   return (
     <section>
+      <div className='mt-10 ml-10'>
+        <Link to='/admin' className='text-white capitalize '>
+          <Trans i18nKey='admin'>admin</Trans>
+        </Link>
+      </div>
       <div className='w-2/4 h-screen m-auto justify-center align-middle'>
         <div id='card' className='w-3/5 m-auto pt-32'>
           <img

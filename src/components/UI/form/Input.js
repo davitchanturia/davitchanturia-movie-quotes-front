@@ -1,4 +1,6 @@
-const Input = (props) => {
+import React from 'react';
+
+const Input = React.forwardRef((props, ref) => {
   return (
     <div className='col-span-1 mt-3'>
       <label
@@ -8,6 +10,7 @@ const Input = (props) => {
         {props.title}
       </label>
       <input
+        ref={ref}
         defaultValue={props.value}
         type={props.type}
         name={props.type}
@@ -17,6 +20,6 @@ const Input = (props) => {
       />
     </div>
   );
-};
+});
 
 export default Input;

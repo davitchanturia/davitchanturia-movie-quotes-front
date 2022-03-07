@@ -1,6 +1,27 @@
+import { useRef } from 'react';
+import axios from 'axios';
 import Input from './UI/form/Input';
 
 const Login = () => {
+  const email = useRef();
+  const password = useRef();
+
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
+
+    axios
+      .post('http://127.0.0.1:8000/api/login', {
+        email: email.current.value,
+        password: password.current.value,
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
   return (
     <>
       <div className='h-screen flex justify-center items-center bg-slate-300'>
@@ -14,10 +35,14 @@ const Login = () => {
 
             <div className='mt-8'>
               <div className='mt-6'>
-                <form action='#' method='POST' className='space-y-6'>
-                  <Input title='Email address' type='email' />
-
-                  <Input title='Password' type='password' />
+                <form
+                  onSubmit={onSubmitHandler}
+                  method='POST'
+                  className='space-y-6'
+                >
+                  <Input title='Email address' type='email' ref={email} />
+                  {/* <input type='text' ref={text} /> */}
+                  <Input title='Password' type='password' ref={password} />
 
                   <div>
                     <button

@@ -29,7 +29,7 @@ function App() {
     <>
       {isLoading && <Spinner />}
       {error && (
-        <p className='text-white text-lg text-center mt-32'>
+        <p className='text-white w-full text-lg text-center absolute top-32'>
           something went wrong, try another time!
         </p>
       )}
