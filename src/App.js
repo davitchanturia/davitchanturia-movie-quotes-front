@@ -9,6 +9,7 @@ import AdminPanel from './pages/AdminPanel';
 import Spinner from './components/UI/Spinner';
 import useApi from './hooks/use-api';
 import DataContext from './store/data-context';
+import Login from './components/Login';
 
 function App() {
   const { t, i18n } = useTranslation();
@@ -38,6 +39,7 @@ function App() {
           <Route path='/quotes' element={<List data={dataCtx.movie} />} />
         )}
         <Route path='/admin' element={<AdminPanel />} />
+        <Route path='/login' element={<Login />} />
       </Routes>
     </>
   );
