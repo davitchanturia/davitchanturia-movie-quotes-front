@@ -19,9 +19,17 @@ const MovieModal = (props) => {
         <form action='#' method='POST'>
           <div className='px-4 py-5 bg-white sm:p-6'>
             <div className=''>
-              <Input title='movie name - english' value={value.en} />
+              <Input
+                title='movie name - english'
+                type='text'
+                value={value.en}
+              />
 
-              <Input title='movie name - georgian' value={value.ka} />
+              <Input
+                title='movie name - georgian'
+                type='text'
+                value={value.ka}
+              />
 
               <Buttons action='create' onCancel={props.onClose} />
             </div>

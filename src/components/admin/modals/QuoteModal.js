@@ -50,8 +50,16 @@ const QuoteModal = (props) => {
         <form action='#' method='POST'>
           <div className='px-4 py-5 bg-white sm:p-6'>
             <div className=''>
-              <Input title='quote name - english' value={value.en} />
-              <Input title='quote name - georgian' value={value.ka} />
+              <Input
+                title='quote name - english'
+                type='text'
+                value={value.en}
+              />
+              <Input
+                title='quote name - georgian'
+                type='text'
+                value={value.ka}
+              />
               <UploadInput />
               <select
                 name='movie_id'
