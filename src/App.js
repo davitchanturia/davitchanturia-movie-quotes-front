@@ -1,5 +1,5 @@
 import { useEffect, useContext } from 'react';
-import { Route, Routes } from 'react-router';
+import { Navigate, Route, Routes } from 'react-router';
 import { useTranslation } from 'react-i18next';
 
 import List from './pages/List';
@@ -10,11 +10,13 @@ import Spinner from './components/UI/Spinner';
 import useApi from './hooks/use-api';
 import DataContext from './store/data-context';
 import Login from './components/Login';
+import AdminContext from './store/admin-context';
 
 function App() {
   const { t, i18n } = useTranslation();
 
   const dataCtx = useContext(DataContext);
+  const adminCtx = useContext(AdminContext);
 
   const httpData = useApi('main');
   const { isLoading, error, sendRequest } = httpData;
@@ -38,7 +40,12 @@ function App() {
         {!isEmpty && (
           <Route path='/quotes' element={<List data={dataCtx.movie} />} />
         )}
-        <Route path='/admin' element={<AdminPanel />} />
+        <Route
+          path='/admin'
+          element={
+            adminCtx.isLoggedIn ? <AdminPanel /> : <Navigate to='/login' />
+          }
+        />
         <Route path='/login' element={<Login />} />
       </Routes>
     </>
