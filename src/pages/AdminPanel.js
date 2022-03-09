@@ -6,31 +6,17 @@ import Navbar from '../components/admin/Navbar';
 import SideBar from '../components/admin/SideBar';
 import Spinner from '../components/UI/Spinner';
 import DataContext from '../store/data-context';
+import useAuthCheck from '../hooks/use-authCheck';
 
 const AdminPanel = () => {
-  const [isLoading, setIsLoading] = useState(true);
-
   const navigate = useNavigate();
-  const dataCtx = useContext(DataContext);
+
+  const checkAuth = useAuthCheck('adminpanel');
+  const { isLoading, sendAuthRequest } = checkAuth;
 
   useEffect(() => {
-    (async () => {
-      try {
-        await apiClient.get('sanctum/csrf-cookie');
-        const response = await apiClient.get('api/all-data');
-
-        dataCtx.onAllData(response.data);
-        setIsLoading(false);
-      } catch (error) {
-        if (error.response.status === 401) {
-          navigate('/login');
-        }
-        if (error.response.status === 429) {
-          navigate('/');
-        }
-      }
-    })();
-  }, [navigate]);
+    sendAuthRequest('api/all-data');
+  }, [sendAuthRequest, navigate]);
 
   if (isLoading) {
     return <Spinner color='admin' />;

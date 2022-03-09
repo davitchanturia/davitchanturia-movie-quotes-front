@@ -3,32 +3,20 @@ import { useNavigate } from 'react-router';
 import Input from './UI/form/Input';
 import Spinner from '../components/UI/Spinner';
 import apiClient from '../api/api';
+import useAuthCheck from '../hooks/use-authCheck';
 
 const Login = () => {
   const email = useRef();
   const password = useRef();
 
-  const [isLoading, setIsLoading] = useState(true);
-
   const navigate = useNavigate();
 
-  useEffect(() => {
-    (async () => {
-      try {
-        await apiClient.get('sanctum/csrf-cookie');
-        const response = await apiClient.get('api/logged-in');
+  const checkAuth = useAuthCheck('login');
+  const { isLoading, sendAuthRequest } = checkAuth;
 
-        setIsLoading(false);
-        if (response.data.isLoggedIn === 'true') {
-          navigate('/admin');
-        }
-      } catch (error) {
-        if (error.response.status === 401) {
-          navigate('/login');
-        }
-      }
-    })();
-  }, [navigate]);
+  useEffect(() => {
+    sendAuthRequest('api/logged-in');
+  }, [sendAuthRequest]);
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
