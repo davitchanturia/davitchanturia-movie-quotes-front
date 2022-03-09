@@ -1,25 +1,34 @@
 import { useRef } from 'react';
-import axios from 'axios';
+import { useNavigate } from 'react-router';
 import Input from './UI/form/Input';
+import apiClient from '../api/api';
 
 const Login = () => {
   const email = useRef();
   const password = useRef();
 
+  const navigate = useNavigate();
+
   const onSubmitHandler = (e) => {
     e.preventDefault();
 
-    axios
-      .post('http://127.0.0.1:8000/api/login', {
-        email: email.current.value,
-        password: password.current.value,
-      })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    const data = {
+      email: email.current.value,
+      password: password.current.value,
+    };
+
+    (async () => {
+      try {
+        await apiClient.get('sanctum/csrf-cookie');
+        const response = await apiClient.post('api/login', data);
+
+        if (response.data.success) {
+          navigate('/admin');
+        }
+      } catch (error) {
+        console.log(error.status.message);
+      }
+    })();
   };
 
   return (

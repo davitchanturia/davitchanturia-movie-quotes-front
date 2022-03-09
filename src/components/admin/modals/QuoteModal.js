@@ -20,12 +20,12 @@ const QuoteModal = (props) => {
     value.ka = props.val.name.ka;
 
     //active movie
-    check.checkedMovie = dataCtx.movie.allMovies.filter(
+    check.checkedMovie = dataCtx.allData.allMovies.filter(
       (movie) => movie.id == props.val.movie_id
     );
 
     //filter array without active movie
-    check.moviesWithoutChecked = dataCtx.movie.allMovies.filter(
+    check.moviesWithoutChecked = dataCtx.allData.allMovies.filter(
       (movie) => movie.id !== check.checkedMovie[0].id
     );
 
@@ -39,7 +39,7 @@ const QuoteModal = (props) => {
     value.ka = '';
 
     //for create modal we fetching all movies
-    check.Movies = dataCtx.movie.allMovies.map((movie) => {
+    check.Movies = dataCtx.allData.allMovies.map((movie) => {
       return <option key={movie.id}>{movie.name.en}</option>;
     });
   }

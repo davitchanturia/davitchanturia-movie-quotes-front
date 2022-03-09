@@ -9,6 +9,7 @@ import './i18n/i18n';
 import { AdminContextProvider } from './store/admin-context';
 import { DataContextProvider } from './store/data-context';
 import { ModalContextProvider } from './store/modal-context';
+import axios from 'axios';
 
 ReactDOM.render(
   <ModalContextProvider>

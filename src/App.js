@@ -40,12 +40,7 @@ function App() {
         {!isEmpty && (
           <Route path='/quotes' element={<List data={dataCtx.movie} />} />
         )}
-        <Route
-          path='/admin'
-          element={
-            adminCtx.isLoggedIn ? <AdminPanel /> : <Navigate to='/login' />
-          }
-        />
+        <Route path='/admin' element={<AdminPanel />} />
         <Route path='/login' element={<Login />} />
       </Routes>
     </>

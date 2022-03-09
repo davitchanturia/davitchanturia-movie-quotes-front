@@ -22,10 +22,10 @@ const Grid = () => {
   let data;
 
   if (adminCtx.active === 'Movies') {
-    data = dataCtx.movie.allMovies;
+    data = dataCtx.allData.allMovies;
   }
   if (adminCtx.active === 'Quotes') {
-    data = dataCtx.movie.quotes;
+    data = dataCtx.allData.quotes;
   }
 
   const onCloseHandler = () => {
