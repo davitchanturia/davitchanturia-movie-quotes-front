@@ -27,6 +27,10 @@ function App() {
 
   let isEmpty = Object.entries(dataCtx.movie).length === 0;
 
+  // const isLoggedIn = localStorage.getItem('isLoggedIn');
+
+  // console.log(isLoggedIn);
+
   return (
     <>
       {isLoading && <Spinner />}

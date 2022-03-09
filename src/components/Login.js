@@ -1,13 +1,34 @@
-import { useRef } from 'react';
+import { useRef, useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import Input from './UI/form/Input';
+import Spinner from '../components/UI/Spinner';
 import apiClient from '../api/api';
 
 const Login = () => {
   const email = useRef();
   const password = useRef();
 
+  const [isLoading, setIsLoading] = useState(true);
+
   const navigate = useNavigate();
+
+  useEffect(() => {
+    (async () => {
+      try {
+        await apiClient.get('sanctum/csrf-cookie');
+        const response = await apiClient.get('api/logged-in');
+
+        setIsLoading(false);
+        if (response.data.isLoggedIn === 'true') {
+          navigate('/admin');
+        }
+      } catch (error) {
+        if (error.response.status === 401) {
+          navigate('/login');
+        }
+      }
+    })();
+  }, [navigate]);
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
@@ -26,10 +47,14 @@ const Login = () => {
           navigate('/admin');
         }
       } catch (error) {
-        console.log(error.status.message);
+        console.log(error.status);
       }
     })();
   };
+
+  if (isLoading) {
+    return <Spinner color='admin' />;
+  }
 
   return (
     <>
@@ -50,7 +75,6 @@ const Login = () => {
                   className='space-y-6'
                 >
                   <Input title='Email address' type='email' ref={email} />
-                  {/* <input type='text' ref={text} /> */}
                   <Input title='Password' type='password' ref={password} />
 
                   <div>

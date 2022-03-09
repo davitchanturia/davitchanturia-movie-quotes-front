@@ -1,4 +1,5 @@
-import { useEffect, useContext } from 'react';
+import { useEffect, useContext, useState } from 'react';
+import { useNavigate } from 'react-router';
 import apiClient from '../api/api';
 import Data from '../components/admin/Data';
 import Navbar from '../components/admin/Navbar';
@@ -7,8 +8,9 @@ import Spinner from '../components/UI/Spinner';
 import DataContext from '../store/data-context';
 
 const AdminPanel = () => {
-  // const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
+  const navigate = useNavigate();
   const dataCtx = useContext(DataContext);
 
   useEffect(() => {
@@ -18,17 +20,21 @@ const AdminPanel = () => {
         const response = await apiClient.get('api/all-data');
 
         dataCtx.onAllData(response.data);
-
-        // setIsLoading(false);
+        setIsLoading(false);
       } catch (error) {
-        console.log(error);
+        if (error.response.status === 401) {
+          navigate('/login');
+        }
+        if (error.response.status === 429) {
+          navigate('/');
+        }
       }
     })();
-  }, []);
+  }, [navigate]);
 
-  // if (!isLoading) {
-  //   return <Spinner />;
-  // }
+  if (isLoading) {
+    return <Spinner color='admin' />;
+  }
 
   return (
     <div className='w-full h-screen bg-gray-100'>
