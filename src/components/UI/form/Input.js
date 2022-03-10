@@ -1,25 +1,26 @@
 import React from 'react';
 
-const Input = React.forwardRef((props, ref) => {
+const Input = ({ type, title, value, register, error }) => {
   return (
-    <div className='col-span-1 mt-3'>
+    <div className='col-span-1  transition-all duration-1000'>
       <label
-        htmlFor={props.type}
-        className='block text-sm font-medium text-gray-700 capitalize'
+        htmlFor={type}
+        className='block text-sm font-medium text-gray-700 mb-3 capitalize'
       >
-        {props.title}
+        {title}
       </label>
       <input
-        ref={ref}
-        defaultValue={props.value}
-        type={props.type}
-        name={props.type}
-        id={props.type}
+        {...register}
+        defaultValue={value}
+        type={type}
+        name={type}
+        id={type}
         autoComplete='given-name'
-        className='mt-3 p-2 focus:outline-none block w-full shadow-sm sm:text-sm border border-gray-200 rounded-md'
+        className='p-2 focus:outline-none block w-full shadow-sm sm:text-sm border border-gray-200 rounded-md'
       />
+      <p className='text-red-500 text-sm mt-1 h-1'>{error}</p>
     </div>
   );
-});
+};
 
 export default Input;
