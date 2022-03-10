@@ -1,10 +1,11 @@
-import axios from 'axios';
 import { useTranslation } from 'react-i18next';
+import apiClient from '../api/api';
+import { useNavigate } from 'react-router';
 
 import { useCallback, useState, useContext } from 'react';
 import DataContext from '../store/data-context';
 
-const useApi = () => {
+const useApi = (type) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState();
 
@@ -12,24 +13,37 @@ const useApi = () => {
 
   const { t, i18n } = useTranslation();
 
+  const navigate = useNavigate();
+
   const sendRequest = useCallback(
-    async (file) => {
-      if (file === 'getData') {
+    async (path) => {
+      try {
         setIsLoading(true);
-        await axios
-          .get('http://127.0.0.1:8000/api/random-movie')
-          .then(function (response) {
-            if (!response.data) {
-              throw new Error('Something went wrong');
-            }
-            dataCtx.onGetData(response.data);
+
+        if (type === 'getData') {
+          const response = await apiClient.get(path);
+          dataCtx.onGetData(response.data);
+
+          i18n.changeLanguage('en');
+        }
+        if (type === 'adminpanel') {
+          await apiClient.get('sanctum/csrf-cookie');
+          const response = await apiClient.get(path);
+
+          dataCtx.onAllData(response.data);
+        }
+        setIsLoading(false);
+      } catch (error) {
+        if (error.response.status === 401) {
+          if (type === 'adminpanel') {
+            navigate('/login');
+          } else {
             setIsLoading(false);
-            i18n.changeLanguage('en');
-          })
-          .catch(function (error) {
-            setError(error.message);
-            setIsLoading(false);
-          });
+          }
+        }
+        if (error.response.status === 429) {
+          navigate('/');
+        }
       }
     },
     [i18n]

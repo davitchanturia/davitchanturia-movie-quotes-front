@@ -1,22 +1,20 @@
-import { useEffect, useContext, useState } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router';
-import apiClient from '../api/api';
 import Data from '../components/admin/Data';
 import Navbar from '../components/admin/Navbar';
 import SideBar from '../components/admin/SideBar';
 import Spinner from '../components/UI/Spinner';
-import DataContext from '../store/data-context';
-import useAuthCheck from '../hooks/use-authCheck';
+import useApi from '../hooks/use-api';
 
 const AdminPanel = () => {
   const navigate = useNavigate();
 
-  const checkAuth = useAuthCheck('adminpanel');
-  const { isLoading, sendAuthRequest } = checkAuth;
+  const httpData = useApi('adminpanel');
+  const { isLoading, sendRequest } = httpData;
 
   useEffect(() => {
-    sendAuthRequest('api/all-data');
-  }, [sendAuthRequest, navigate]);
+    sendRequest('api/all-data');
+  }, [sendRequest, navigate]);
 
   if (isLoading) {
     return <Spinner color='admin' />;

@@ -14,26 +14,14 @@ const useAuthCheck = (type) => {
       await apiClient.get('sanctum/csrf-cookie');
       const response = await apiClient.get(path);
 
-      //extra operations for fetching all data
-      if (type === 'adminpanel') {
-        dataCtx.onAllData(response.data);
-      }
-
-      //extra operations for cecking auth status
-      if (type === 'login') {
-        if (response.data.isLoggedIn === 'true') {
-          navigate('/admin');
-        }
+      if (response.data.isLoggedIn === 'true') {
+        navigate('/admin');
       }
 
       setIsLoading(false);
     } catch (error) {
       if (error.response.status === 401) {
-        if (type === 'adminpanel') {
-          navigate('/login');
-        } else {
-          setIsLoading(false);
-        }
+        setIsLoading(false);
       }
       if (error.response.status === 429) {
         navigate('/');

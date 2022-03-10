@@ -18,18 +18,14 @@ function App() {
   const dataCtx = useContext(DataContext);
   const adminCtx = useContext(AdminContext);
 
-  const httpData = useApi('main');
+  const httpData = useApi('getData');
   const { isLoading, error, sendRequest } = httpData;
 
   useEffect(() => {
-    sendRequest('getData');
+    sendRequest('api/random-movie');
   }, [sendRequest]);
 
   let isEmpty = Object.entries(dataCtx.movie).length === 0;
-
-  // const isLoggedIn = localStorage.getItem('isLoggedIn');
-
-  // console.log(isLoggedIn);
 
   return (
     <>
