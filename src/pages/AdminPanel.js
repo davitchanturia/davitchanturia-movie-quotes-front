@@ -23,7 +23,7 @@ const AdminPanel = () => {
   return (
     <div className='w-full h-screen bg-gray-100'>
       <Navbar />
-      <div className='flex'>
+      <div className='flex h-full'>
         <SideBar />
         <Data />
       </div>

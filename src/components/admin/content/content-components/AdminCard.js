@@ -21,7 +21,7 @@ const AdminCard = (props) => {
   };
 
   return (
-    <div className=' col-span-1 flex flex-col text-center bg-white rounded-lg shadow'>
+    <div className='h-72 col-span-1 flex flex-col text-center bg-white rounded-lg shadow relative'>
       <div className='flex-1 flex flex-col p-8'>
         <img
           className='w-32 h-32 flex-shrink-0 mx-auto rounded-full'
@@ -37,7 +37,7 @@ const AdminCard = (props) => {
           </h1>
         )}
       </div>
-      <div className='flex rounded-lg'>
+      <div className='flex rounded-lg w-full absolute bottom-0 left-0'>
         <div
           onClick={onEditHandler.bind(null, props.info.id)}
           className='w-1/2 py-2 capitalize cursor-pointer text-green-800 text-xs font-medium bg-green-200'

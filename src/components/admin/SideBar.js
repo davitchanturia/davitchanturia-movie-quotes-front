@@ -6,7 +6,7 @@ const SideBar = () => {
   const adminCtx = useContext(AdminContext);
 
   return (
-    <div className='w-1/6 h-80 ml-20 pt-2 bg-slate-300 rounded-lg mt-7'>
+    <div className='w-1/6 h-80 ml-20 pt-2 bg-slate-300 rounded-lg mt-28'>
       <nav
         className='mt-5 flex-shrink-0 h-full divide-y  overflow-y-auto'
         aria-label='Sidebar'

@@ -7,7 +7,7 @@ const Data = () => {
   const adminCtx = useContext(AdminContext);
 
   return (
-    <div className='w-5/6 mr-20 p-7 '>
+    <div className='w-5/6 mr-20 pl-7 pt-7 mt-24'>
       {adminCtx.active === 'Home' && <Welcome />}
       {adminCtx.active !== 'Home' && <Grid />}
     </div>
