@@ -1,9 +1,18 @@
+import apiClient from '../../../api/api';
+import { useNavigate } from 'react-router';
+import { useContext } from 'react';
+import AdminContext from '../../../store/admin-context';
+import ModalContext from '../../../store/modal-context';
+
 import Buttons from '../../UI/form/Buttons';
 import Modal from '../../UI/Modal';
 import Warning from '../../UI/svg/Warning';
 import Xclose from '../../UI/svg/Xclose';
 
 const ConfirmModal = (props) => {
+  const navigate = useNavigate();
+  const adminCtx = useContext(AdminContext);
+
   let title;
   let buttonText;
 
@@ -16,6 +25,24 @@ const ConfirmModal = (props) => {
     title = 'Do not kill me ninoo!';
     buttonText = 'Kill it';
   }
+
+  const actionHandler = (e) => {
+    e.preventDefault();
+    if (props.for === 'logout') {
+      (async () => {
+        try {
+          const response = await apiClient.post('api/logout');
+
+          if (response.data === 200) {
+            navigate('/login');
+          }
+          adminCtx.onChangeActivePage('Home');
+        } catch (error) {
+          // console.log(error.message);
+        }
+      })();
+    }
+  };
 
   return (
     <Modal>
@@ -39,7 +66,11 @@ const ConfirmModal = (props) => {
             </div>
           </div>
         </div>
-        <Buttons action={buttonText} onCancel={props.onClose} />
+        <Buttons
+          action={buttonText}
+          onCancel={props.onClose}
+          onClick={actionHandler}
+        />
       </div>
     </Modal>
   );
