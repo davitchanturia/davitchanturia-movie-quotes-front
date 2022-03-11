@@ -36,17 +36,36 @@ const MovieModal = (props) => {
     };
 
     if (english && english.length > 3 && georgian && georgian.length > 3) {
-      (async () => {
-        try {
-          const response = await apiClient.post('api/add-movie', values);
+      if (props.for === 'edit') {
+        (async () => {
+          try {
+            const response = await apiClient.post('api/edit-movie', {
+              englishName: english,
+              georgianName: georgian,
+              slug: english,
+              id: props.val.id,
+            });
 
-          if (response.data === 200) {
-            navigate('/admin');
+            if (response.data === 200) {
+              navigate('/admin');
+            }
+          } catch (error) {
+            // console.log(error.message);
           }
-        } catch (error) {
-          // console.log(error.message);
-        }
-      })();
+        })();
+      } else {
+        (async () => {
+          try {
+            const response = await apiClient.post('api/add-movie', values);
+
+            if (response.data === 200) {
+              navigate('/admin');
+            }
+          } catch (error) {
+            // console.log(error.message);
+          }
+        })();
+      }
     }
   };
 
