@@ -1,4 +1,6 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+
 import DataContext from '../../../store/data-context';
 
 import Buttons from '../../UI/form/Buttons';
@@ -9,15 +11,29 @@ import Modal from '../../UI/Modal';
 const QuoteModal = (props) => {
   const dataCtx = useContext(DataContext);
 
+  const {
+    getValues,
+    setValue,
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
   let value = { en: '', ka: '' };
   let check = { checkedMovie: {}, moviesWithoutChecked: [], Movies: [] };
 
-  if (props.for === 'edit') {
-    //for edit modal we need modified data
+  useEffect(() => {
+    if (props.for === 'edit') {
+      //for edit modal we need modified data
 
-    // previous values for inputs
-    value.en = props.val.name.en;
-    value.ka = props.val.name.ka;
+      // previous values for inputs
+      setValue('quoteNameEnglish', props.val.name.en);
+      setValue('quoteNameGeorgian', props.val.name.ka);
+    }
+  }, []);
+
+  if (props.for === 'edit') {
+    //for edit modal we need modified data for dropdown
 
     //active movie
     check.checkedMovie = dataCtx.allData.allMovies.filter(
@@ -34,31 +50,49 @@ const QuoteModal = (props) => {
       return <option key={movie.id}>{movie.name.en}</option>;
     });
   } else {
-    //clean values for inputs when create
-    value.en = '';
-    value.ka = '';
-
     //for create modal we fetching all movies
     check.Movies = dataCtx.allData.allMovies.map((movie) => {
       return <option key={movie.id}>{movie.name.en}</option>;
     });
   }
 
+  const onSubmitHandler = (data) => {
+    const english = getValues('quoteNameEnglish');
+    const georgian = getValues('quoteNameGeorgian');
+    console.log(english, georgian);
+  };
+
   return (
     <Modal>
       <div className='relative inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6'>
-        <form action='#' method='POST'>
+        <form action='#' method='POST' onSubmit={handleSubmit(onSubmitHandler)}>
           <div className='px-4 py-5 bg-white sm:p-6'>
             <div className=''>
               <Input
+                register={register('quoteNameEnglish', {
+                  required: 'This filed is required',
+                  minLength: {
+                    value: 4,
+                    message: 'Value has to be more than 4 characters',
+                  },
+                })}
                 title='quote name - english'
                 type='text'
                 value={value.en}
+                error={errors.quoteNameEnglish?.message}
               />
               <Input
+                register={register('quoteNameGeorgian', {
+                  required: 'This filed is required',
+                  minLength: {
+                    value: 4,
+                    message: 'Value has to be more than 4 characters',
+                  },
+                })}
                 title='quote name - georgian'
                 type='text'
                 value={value.ka}
+                error={errors.quoteNameGeorgian?.message}
               />
               <UploadInput />
               <select

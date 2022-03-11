@@ -2,7 +2,7 @@ const Buttons = (props) => {
   return (
     <div className='mt-5 sm:mt-4 sm:flex sm:flex-row-reverse'>
       <button
-        type='button'
+        type='submit'
         className='w-full capitalize inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-slate-900 text-base font-medium text-white hover:bg-slate-600 focus:outline-none focus:ring-2 focus:ring-offset-2  sm:ml-3 sm:w-auto sm:text-sm'
       >
         {props.action}
