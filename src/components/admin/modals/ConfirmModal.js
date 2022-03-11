@@ -2,7 +2,6 @@ import apiClient from '../../../api/api';
 import { useNavigate } from 'react-router';
 import { useContext } from 'react';
 import AdminContext from '../../../store/admin-context';
-import ModalContext from '../../../store/modal-context';
 
 import Buttons from '../../UI/form/Buttons';
 import Modal from '../../UI/Modal';

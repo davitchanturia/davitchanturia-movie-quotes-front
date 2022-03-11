@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import apiClient from '../../../api/api';
+import { useNavigate } from 'react-router';
 
 import Buttons from '../../UI/form/Buttons';
 import Input from '../../UI/form/Input';
@@ -14,6 +16,8 @@ const MovieModal = (props) => {
     formState: { errors },
   } = useForm();
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     if (props.for === 'edit') {
       setValue('movieNameEnglish', props.val.name.en);
@@ -24,7 +28,26 @@ const MovieModal = (props) => {
   const onSubmitHandler = (data) => {
     const english = getValues('movieNameEnglish');
     const georgian = getValues('movieNameGeorgian');
-    console.log(english, georgian);
+
+    const values = {
+      englishName: english,
+      georgianName: georgian,
+      slug: english,
+    };
+
+    if (english && english.length > 3 && georgian && georgian.length > 3) {
+      (async () => {
+        try {
+          const response = await apiClient.post('api/add-movie', values);
+
+          if (response.data === 200) {
+            navigate('/admin');
+          }
+        } catch (error) {
+          // console.log(error.message);
+        }
+      })();
+    }
   };
 
   return (
