@@ -41,6 +41,23 @@ const ConfirmModal = (props) => {
         }
       })();
     }
+    if (props.for === 'delete') {
+      (async () => {
+        try {
+          const response = await apiClient.delete(
+            `api/delete-movie/${props.delete}`
+          );
+
+          console.log(response);
+
+          if (response.data === 200) {
+            navigate('/admin');
+          }
+        } catch (error) {
+          // console.log(error.message);
+        }
+      })();
+    }
   };
 
   return (

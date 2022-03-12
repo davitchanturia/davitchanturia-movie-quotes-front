@@ -6,8 +6,9 @@ const AdminCard = (props) => {
 
   const quote = props.movieOrQuote === 'Quotes' ? true : false;
 
-  const onDeleteHandler = () => {
+  const onDeleteHandler = (id) => {
     modalCtx.onChangeDelete(true);
+    props.onDelete(id);
   };
 
   const onEditHandler = (id) => {
@@ -45,7 +46,7 @@ const AdminCard = (props) => {
           edit
         </div>
         <div
-          onClick={onDeleteHandler}
+          onClick={onDeleteHandler.bind(null, props.info.id)}
           className='w-1/2 py-2 capitalize cursor-pointer text-slate-900 text-xs font-medium bg-slate-200'
         >
           delete

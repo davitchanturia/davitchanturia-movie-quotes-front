@@ -13,6 +13,7 @@ import QuoteModal from '../modals/QuoteModal';
 const Grid = () => {
   const [editData, setEditData] = useState({});
   const [createOrEdit, setCreateOrEdit] = useState('create');
+  const [deleteData, setDeleteData] = useState('');
 
   const dataCtx = useContext(DataContext);
   const adminCtx = useContext(AdminContext);
@@ -53,6 +54,10 @@ const Grid = () => {
     setCreateOrEdit('edit');
   };
 
+  const deleteCardHandler = (id) => {
+    setDeleteData(id);
+  };
+
   return (
     <>
       <div>
@@ -66,6 +71,7 @@ const Grid = () => {
             info={file}
             movieOrQuote={adminCtx.active}
             ShowDataOnEdit={returnData}
+            onDelete={deleteCardHandler}
           />
         ))}
       </div>
@@ -73,7 +79,11 @@ const Grid = () => {
         <ConfirmModal for='logout' onClose={onCloseHandler} />
       )}
       {modalCtx.isOpenDelete && (
-        <ConfirmModal for='delete' onClose={onCloseHandler} />
+        <ConfirmModal
+          for='delete'
+          onClose={onCloseHandler}
+          delete={deleteData}
+        />
       )}
       {modalCtx.isOpenCreateMovie && (
         <MovieModal
