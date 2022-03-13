@@ -1,5 +1,5 @@
 import { useEffect, useContext } from 'react';
-import { Navigate, Route, Routes } from 'react-router';
+import { Route, Routes } from 'react-router';
 import { useTranslation } from 'react-i18next';
 
 import List from './pages/List';
@@ -10,13 +10,11 @@ import Spinner from './components/UI/Spinner';
 import useApi from './hooks/use-api';
 import DataContext from './store/data-context';
 import Login from './components/Login';
-import AdminContext from './store/admin-context';
 
 function App() {
   const { t, i18n } = useTranslation();
 
   const dataCtx = useContext(DataContext);
-  const adminCtx = useContext(AdminContext);
 
   const httpData = useApi('getData');
   const { isLoading, error, sendRequest } = httpData;

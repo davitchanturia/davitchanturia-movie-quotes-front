@@ -1,5 +1,3 @@
-import apiClient from '../../../api/api';
-import { useNavigate } from 'react-router';
 import { useContext } from 'react';
 import AdminContext from '../../../store/admin-context';
 import useCrud from '../../../hooks/use-crud';
@@ -10,7 +8,6 @@ import Warning from '../../UI/svg/Warning';
 import Xclose from '../../UI/svg/Xclose';
 
 const ConfirmModal = (props) => {
-  const navigate = useNavigate();
   const adminCtx = useContext(AdminContext);
 
   const crud = useCrud('logout');
@@ -33,18 +30,6 @@ const ConfirmModal = (props) => {
     e.preventDefault();
     if (props.for === 'logout') {
       actionRequest('api/logout');
-      // (async () => {
-      //   try {
-      //     const response = await apiClient.post('api/logout');
-
-      //     if (response.data === 200) {
-      //       navigate('/login');
-      //     }
-      //     adminCtx.onChangeActivePage('Home');
-      //   } catch (error) {
-      //     // console.log(error.message);
-      //   }
-      // })();
     }
     if (props.for === 'delete') {
       if (adminCtx.active === 'Movies') {
