@@ -42,21 +42,40 @@ const ConfirmModal = (props) => {
       })();
     }
     if (props.for === 'delete') {
-      (async () => {
-        try {
-          const response = await apiClient.delete(
-            `api/delete-movie/${props.delete}`
-          );
+      if (adminCtx.active === 'Movies') {
+        (async () => {
+          try {
+            const response = await apiClient.delete(
+              `api/delete-movie/${props.delete}`
+            );
 
-          console.log(response);
+            console.log(response);
 
-          if (response.data === 200) {
-            navigate('/admin');
+            if (response.data === 200) {
+              navigate('/admin');
+            }
+          } catch (error) {
+            // console.log(error.message);
           }
-        } catch (error) {
-          // console.log(error.message);
-        }
-      })();
+        })();
+      }
+      if (adminCtx.active === 'Quotes') {
+        (async () => {
+          try {
+            const response = await apiClient.delete(
+              `api/delete-quote/${props.delete}`
+            );
+
+            console.log(response);
+
+            if (response.data === 200) {
+              navigate('/admin');
+            }
+          } catch (error) {
+            // console.log(error.message);
+          }
+        })();
+      }
     }
   };
 

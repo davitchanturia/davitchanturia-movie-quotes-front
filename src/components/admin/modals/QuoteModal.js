@@ -64,13 +64,13 @@ const QuoteModal = (props) => {
     const georgian = getValues('quoteNameGeorgian');
     const movie = getValues('movie_id');
     const image = getValues('thumbnail');
-    // console.log(english, georgian, movie, image[0]);
 
     const values = new FormData();
     values.append('englishName', english);
     values.append('georgianName', georgian);
     values.append('relevantMovie', movie);
     values.append('thumbnail', image[0]);
+    values.append('id', props.val.id);
 
     if (
       english &&
@@ -80,6 +80,17 @@ const QuoteModal = (props) => {
       image
     ) {
       if (props.for === 'edit') {
+        (async () => {
+          try {
+            const response = await apiClient.post('api/edit-quote', values);
+            console.log(response);
+            if (response.data === 200) {
+              navigate('/admin');
+            }
+          } catch (error) {
+            // console.log(error.message);
+          }
+        })();
       } else {
         (async () => {
           try {
