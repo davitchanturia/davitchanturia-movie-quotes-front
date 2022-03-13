@@ -1,9 +1,7 @@
 import { useContext, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import apiClient from '../../../api/api';
-import { useNavigate } from 'react-router';
-
 import DataContext from '../../../store/data-context';
+import useCrud from '../../../hooks/use-crud';
 
 import Buttons from '../../UI/form/Buttons';
 import Input from '../../UI/form/Input';
@@ -13,8 +11,6 @@ import Modal from '../../UI/Modal';
 const QuoteModal = (props) => {
   const dataCtx = useContext(DataContext);
 
-  const navigate = useNavigate();
-
   const {
     getValues,
     setValue,
@@ -23,12 +19,13 @@ const QuoteModal = (props) => {
     formState: { errors },
   } = useForm();
 
+  const crud = useCrud();
+  const { actionRequest } = crud;
+
   let check = { checkedMovie: {}, moviesWithoutChecked: [], Movies: [] };
 
   useEffect(() => {
     if (props.for === 'edit') {
-      //for edit modal we need modified data
-
       // previous values for inputs
       setValue('quoteNameEnglish', props.val.name.en);
       setValue('quoteNameGeorgian', props.val.name.ka);
@@ -80,31 +77,9 @@ const QuoteModal = (props) => {
       image
     ) {
       if (props.for === 'edit') {
-        (async () => {
-          try {
-            const response = await apiClient.post('api/edit-quote', values);
-            console.log(response);
-            if (response.data === 200) {
-              navigate('/admin');
-            }
-          } catch (error) {
-            // console.log(error.message);
-          }
-        })();
+        actionRequest('api/edit-quote', values);
       } else {
-        (async () => {
-          try {
-            console.log(values);
-            const response = await apiClient.post('api/add-quote', values);
-
-            console.log(response);
-            if (response.data === 200) {
-              navigate('/admin');
-            }
-          } catch (error) {
-            // console.log(error.message);
-          }
-        })();
+        actionRequest('api/add-quote', values);
       }
     }
   };

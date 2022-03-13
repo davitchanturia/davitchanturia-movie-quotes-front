@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import apiClient from '../../../api/api';
-import { useNavigate } from 'react-router';
+import useCrud from '../../../hooks/use-crud';
 
 import Buttons from '../../UI/form/Buttons';
 import Input from '../../UI/form/Input';
@@ -16,7 +15,8 @@ const MovieModal = (props) => {
     formState: { errors },
   } = useForm();
 
-  const navigate = useNavigate();
+  const crud = useCrud();
+  const { actionRequest } = crud;
 
   useEffect(() => {
     if (props.for === 'edit') {
@@ -33,38 +33,14 @@ const MovieModal = (props) => {
       englishName: english,
       georgianName: georgian,
       slug: english,
+      id: props.val.id,
     };
 
     if (english && english.length > 3 && georgian && georgian.length > 3) {
       if (props.for === 'edit') {
-        (async () => {
-          try {
-            const response = await apiClient.post('api/edit-movie', {
-              englishName: english,
-              georgianName: georgian,
-              slug: english,
-              id: props.val.id,
-            });
-
-            if (response.data === 200) {
-              navigate('/admin');
-            }
-          } catch (error) {
-            // console.log(error.message);
-          }
-        })();
+        actionRequest('api/edit-movie', values);
       } else {
-        (async () => {
-          try {
-            const response = await apiClient.post('api/add-movie', values);
-
-            if (response.data === 200) {
-              navigate('/admin');
-            }
-          } catch (error) {
-            // console.log(error.message);
-          }
-        })();
+        actionRequest('api/add-movie', values);
       }
     }
   };
@@ -101,11 +77,7 @@ const MovieModal = (props) => {
                 error={errors.movieNameGeorgian?.message}
               />
 
-              <Buttons
-                action='create'
-                onCancel={props.onClose}
-                // onSubmit={onSubmitHandler}
-              />
+              <Buttons action='create' onCancel={props.onClose} />
             </div>
           </div>
         </form>

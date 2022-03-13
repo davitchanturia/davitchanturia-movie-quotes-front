@@ -2,6 +2,7 @@ import apiClient from '../../../api/api';
 import { useNavigate } from 'react-router';
 import { useContext } from 'react';
 import AdminContext from '../../../store/admin-context';
+import useCrud from '../../../hooks/use-crud';
 
 import Buttons from '../../UI/form/Buttons';
 import Modal from '../../UI/Modal';
@@ -11,6 +12,9 @@ import Xclose from '../../UI/svg/Xclose';
 const ConfirmModal = (props) => {
   const navigate = useNavigate();
   const adminCtx = useContext(AdminContext);
+
+  const crud = useCrud('logout');
+  const { deleteRequest, actionRequest } = crud;
 
   let title;
   let buttonText;
@@ -28,53 +32,26 @@ const ConfirmModal = (props) => {
   const actionHandler = (e) => {
     e.preventDefault();
     if (props.for === 'logout') {
-      (async () => {
-        try {
-          const response = await apiClient.post('api/logout');
+      actionRequest('api/logout');
+      // (async () => {
+      //   try {
+      //     const response = await apiClient.post('api/logout');
 
-          if (response.data === 200) {
-            navigate('/login');
-          }
-          adminCtx.onChangeActivePage('Home');
-        } catch (error) {
-          // console.log(error.message);
-        }
-      })();
+      //     if (response.data === 200) {
+      //       navigate('/login');
+      //     }
+      //     adminCtx.onChangeActivePage('Home');
+      //   } catch (error) {
+      //     // console.log(error.message);
+      //   }
+      // })();
     }
     if (props.for === 'delete') {
       if (adminCtx.active === 'Movies') {
-        (async () => {
-          try {
-            const response = await apiClient.delete(
-              `api/delete-movie/${props.delete}`
-            );
-
-            console.log(response);
-
-            if (response.data === 200) {
-              navigate('/admin');
-            }
-          } catch (error) {
-            // console.log(error.message);
-          }
-        })();
+        deleteRequest(`api/delete-movie/${props.delete}`);
       }
       if (adminCtx.active === 'Quotes') {
-        (async () => {
-          try {
-            const response = await apiClient.delete(
-              `api/delete-quote/${props.delete}`
-            );
-
-            console.log(response);
-
-            if (response.data === 200) {
-              navigate('/admin');
-            }
-          } catch (error) {
-            // console.log(error.message);
-          }
-        })();
+        deleteRequest(`api/delete-quote/${props.delete}`);
       }
     }
   };
