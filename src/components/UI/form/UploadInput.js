@@ -1,6 +1,6 @@
 import Upload from '../svg/Upload';
 
-const UploadInput = () => {
+const UploadInput = (props) => {
   return (
     <div className='mt-1 sm:mt-4 sm:col-span-2'>
       <div className='max-w-lg flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md'>
@@ -17,6 +17,7 @@ const UploadInput = () => {
                 name='file-upload'
                 type='file'
                 className='sr-only'
+                {...props.register}
               />
             </label>
             <p className='pl-1'>or drag and drop</p>

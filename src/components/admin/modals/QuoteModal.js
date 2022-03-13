@@ -1,5 +1,7 @@
 import { useContext, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import apiClient from '../../../api/api';
+import { useNavigate } from 'react-router';
 
 import DataContext from '../../../store/data-context';
 
@@ -11,6 +13,8 @@ import Modal from '../../UI/Modal';
 const QuoteModal = (props) => {
   const dataCtx = useContext(DataContext);
 
+  const navigate = useNavigate();
+
   const {
     getValues,
     setValue,
@@ -19,7 +23,6 @@ const QuoteModal = (props) => {
     formState: { errors },
   } = useForm();
 
-  let value = { en: '', ka: '' };
   let check = { checkedMovie: {}, moviesWithoutChecked: [], Movies: [] };
 
   useEffect(() => {
@@ -59,7 +62,40 @@ const QuoteModal = (props) => {
   const onSubmitHandler = (data) => {
     const english = getValues('quoteNameEnglish');
     const georgian = getValues('quoteNameGeorgian');
-    console.log(english, georgian);
+    const movie = getValues('movie_id');
+    const image = getValues('thumbnail');
+    // console.log(english, georgian, movie, image[0]);
+
+    const values = new FormData();
+    values.append('englishName', english);
+    values.append('georgianName', georgian);
+    values.append('relevantMovie', movie);
+    values.append('thumbnail', image[0]);
+
+    // const values = {
+    //   englishName: english,
+    //   georgianName: georgian,
+    //   relevantMovie: movie,
+    //   thumbnail: image[0],
+    // };
+
+    console.log(values);
+    if (props.for === 'edit') {
+    } else {
+      (async () => {
+        try {
+          console.log(values);
+          const response = await apiClient.post('api/add-quote', values);
+
+          console.log(response);
+          if (response.data === 200) {
+            navigate('/admin');
+          }
+        } catch (error) {
+          // console.log(error.message);
+        }
+      })();
+    }
   };
 
   return (
@@ -78,7 +114,6 @@ const QuoteModal = (props) => {
                 })}
                 title='quote name - english'
                 type='text'
-                value={value.en}
                 error={errors.quoteNameEnglish?.message}
               />
               <Input
@@ -91,12 +126,15 @@ const QuoteModal = (props) => {
                 })}
                 title='quote name - georgian'
                 type='text'
-                value={value.ka}
                 error={errors.quoteNameGeorgian?.message}
               />
-              <UploadInput />
+              <UploadInput
+                register={register('thumbnail', {
+                  required: 'This filed is required',
+                })}
+              />
               <select
-                name='movie_id'
+                {...register('movie_id')}
                 className='mt-4 bg-slate-300  block w-full p-2 rounded-md'
               >
                 {props.for === 'edit' && (
