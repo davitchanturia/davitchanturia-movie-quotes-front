@@ -72,29 +72,29 @@ const QuoteModal = (props) => {
     values.append('relevantMovie', movie);
     values.append('thumbnail', image[0]);
 
-    // const values = {
-    //   englishName: english,
-    //   georgianName: georgian,
-    //   relevantMovie: movie,
-    //   thumbnail: image[0],
-    // };
+    if (
+      english &&
+      english.length > 3 &&
+      georgian &&
+      georgian.length > 3 &&
+      image
+    ) {
+      if (props.for === 'edit') {
+      } else {
+        (async () => {
+          try {
+            console.log(values);
+            const response = await apiClient.post('api/add-quote', values);
 
-    console.log(values);
-    if (props.for === 'edit') {
-    } else {
-      (async () => {
-        try {
-          console.log(values);
-          const response = await apiClient.post('api/add-quote', values);
-
-          console.log(response);
-          if (response.data === 200) {
-            navigate('/admin');
+            console.log(response);
+            if (response.data === 200) {
+              navigate('/admin');
+            }
+          } catch (error) {
+            // console.log(error.message);
           }
-        } catch (error) {
-          // console.log(error.message);
-        }
-      })();
+        })();
+      }
     }
   };
 
@@ -130,8 +130,9 @@ const QuoteModal = (props) => {
               />
               <UploadInput
                 register={register('thumbnail', {
-                  required: 'This filed is required',
+                  required: 'Thumbnail filed is required',
                 })}
+                error={errors.thumbnail?.message}
               />
               <select
                 {...register('movie_id')}

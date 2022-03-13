@@ -25,6 +25,7 @@ const UploadInput = (props) => {
           <p className='text-xs text-gray-500'>PNG, JPG, GIF up to 10MB</p>
         </div>
       </div>
+      <p className='text-red-500 text-sm mt-1 h-2'>{props.error}</p>
     </div>
   );
 };
