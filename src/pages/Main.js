@@ -6,6 +6,8 @@ import i18n from 'i18next';
 import Language from '../components/Language';
 
 const Main = (props) => {
+  const imagePath = `http://127.0.0.1:8000/storage/${props.data.quote.thumbnail}`;
+
   return (
     <section>
       <div>
@@ -20,8 +22,8 @@ const Main = (props) => {
         <div id='card' className='w-3/5 m-auto pt-32'>
           <img
             className='w-full h-64 rounded-md object-cover'
-            alt=''
-            src='https://see.news/wp-content/uploads/2021/04/friends.jpg'
+            alt='quote img'
+            src={imagePath}
           />
           <div className='pt-9'>
             <h1 className='text-center text-white text-xl capitalize'>

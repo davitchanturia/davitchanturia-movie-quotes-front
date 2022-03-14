@@ -8,6 +8,8 @@ const List = (props) => {
 
   const allQuotes = props.data.allQuotes;
 
+  const imagePath = `http://127.0.0.1:8000/storage/${props.data.quote.thumbnail}`;
+
   return (
     <section>
       <div className='mt-10 ml-10'>
@@ -20,7 +22,11 @@ const List = (props) => {
           {props.data.movie.name[i18n.language]}
         </h1>
         {allQuotes.map((quote) => (
-          <Card key={quote.id} title={quote.name[i18n.language]} />
+          <Card
+            key={quote.id}
+            title={quote.name[i18n.language]}
+            imageSrc={imagePath}
+          />
         ))}
       </div>
       <Language />

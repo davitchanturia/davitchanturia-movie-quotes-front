@@ -3,7 +3,7 @@ const Card = (props) => {
     <div className='bg-white mt-7 pb-4 rounded-lg'>
       <img
         className='w-full h-52 rounded-t-lg object-cover'
-        src='https://see.news/wp-content/uploads/2021/04/friends.jpg'
+        src={props.imageSrc}
         alt='quote img'
       />
 
