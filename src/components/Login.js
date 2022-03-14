@@ -6,6 +6,7 @@ import Input from './UI/form/Input';
 import Spinner from '../components/UI/Spinner';
 import apiClient from '../api/api';
 import useAuthCheck from '../hooks/use-authCheck';
+import ErrorMessage from './UI/form/ErrorMessage';
 
 const Login = () => {
   const [notFound, setNotFound] = useState('');
@@ -95,12 +96,6 @@ const Login = () => {
                     type='password'
                     error={errors.password?.message}
                   />
-                  <p
-                    className='text-red-500 text-sm'
-                    style={{ marginBlockStart: 0, marginBlockEnd: 0 }}
-                  >
-                    {notFound}
-                  </p>
 
                   <div>
                     <button
@@ -110,6 +105,7 @@ const Login = () => {
                       Sign in
                     </button>
                   </div>
+                  <ErrorMessage>{notFound}</ErrorMessage>
                 </form>
               </div>
             </div>

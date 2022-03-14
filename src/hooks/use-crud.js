@@ -32,6 +32,7 @@ const useCrud = (isLogout) => {
           }
 
           adminCtx.onChangeActivePage('Home');
+          // modalCtx.onChangeLogout(false);
         } else {
           if (response.data === 200) {
             modalCtx.onChangeMovieCreate(false);

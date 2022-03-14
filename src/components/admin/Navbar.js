@@ -8,16 +8,6 @@ const Navbar = () => {
               <h1 className='h-8 w-auto text-white text-xl'>Movie Quotes</h1>
             </div>
           </div>
-
-          <div className='block lg:w-80'>
-            <div className='flex items-center justify-end'>
-              <div className='flex'>
-                <h1 className='px-3 py-2 rounded-md text-md font-medium text-indigo-200 hover:text-white'>
-                  Logged in: dato
-                </h1>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </nav>

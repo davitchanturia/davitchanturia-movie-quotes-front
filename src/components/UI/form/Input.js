@@ -1,4 +1,5 @@
 import React from 'react';
+import ErrorMessage from './ErrorMessage';
 
 const Input = ({ type, title, value, register, error }) => {
   return (
@@ -18,7 +19,7 @@ const Input = ({ type, title, value, register, error }) => {
         className='p-2 focus:outline-none block w-full shadow-sm sm:text-sm border border-gray-200 rounded-md'
         {...register}
       />
-      <p className='text-red-500 text-sm mt-1 h-2'>{error}</p>
+      <ErrorMessage>{error}</ErrorMessage>
     </div>
   );
 };

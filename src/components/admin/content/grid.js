@@ -29,6 +29,7 @@ const Grid = () => {
     data = dataCtx.allData.quotes;
   }
 
+  console.log(data);
   const onCloseHandler = () => {
     modalCtx.onChangeLogout(false);
     modalCtx.onChangeDelete(false);
