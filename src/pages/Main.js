@@ -8,8 +8,11 @@ import Language from '../components/Language';
 const Main = (props) => {
   return (
     <section>
-      <div className='mt-10 ml-10'>
-        <Link to='/admin' className='text-white capitalize '>
+      <div>
+        <Link
+          to='/admin'
+          className='text-white capitalize absolute top-10 left-10'
+        >
           <Trans i18nKey='admin'>admin</Trans>
         </Link>
       </div>

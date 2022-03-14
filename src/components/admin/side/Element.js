@@ -7,7 +7,7 @@ const Element = (props) => {
   const modalCtx = useContext(ModalContext);
 
   const TextStyles =
-    'group flex items-center w-72 px-2 py-2 text-base font-medium rounded-md text-white transition-all duration-500';
+    'group flex items-center w-full lg:w-72 px-2 py-2 text-base font-medium rounded-md text-white transition-all duration-500 lg:ml-auto';
 
   const SvgStyles = 'mr-4 flex-shrink-0 h-6 w-6';
 

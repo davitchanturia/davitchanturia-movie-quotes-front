@@ -8,6 +8,7 @@ import useApi from '../hooks/use-api';
 
 const useCrud = (isLogout) => {
   const [backError, setBackError] = useState(null);
+
   const navigate = useNavigate();
 
   const httpData = useApi('adminpanel');
