@@ -20,7 +20,7 @@ const QuoteModal = (props) => {
   } = useForm();
 
   const crud = useCrud();
-  const { actionRequest } = crud;
+  const { actionRequest, backError } = crud;
 
   let check = { checkedMovie: {}, moviesWithoutChecked: [], Movies: [] };
 
@@ -132,6 +132,9 @@ const QuoteModal = (props) => {
                 {check.Movies}
               </select>
               <Buttons action='create' onCancel={props.onClose} />
+              <p className='text-red-500 text-sm mt-1 h-2 transition-all duration-1000'>
+                {backError}
+              </p>
             </div>
           </div>
         </form>
