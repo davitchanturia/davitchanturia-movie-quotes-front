@@ -22,7 +22,7 @@ const AdminCard = (props) => {
   };
 
   return (
-    <div className='h-72 col-span-1 flex flex-col text-center bg-white rounded-lg shadow relative'>
+    <div className='h-72 col-span-1 flex flex-col text-center bg-white rounded-lg shadow relative transition-all duration-1000'>
       <div className='flex-1 flex flex-col p-8'>
         <img
           className='w-32 h-32 flex-shrink-0 mx-auto rounded-full'
