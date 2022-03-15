@@ -29,8 +29,8 @@ function App() {
     <>
       {isLoading && <Spinner />}
       {error && (
-        <p className='text-white w-full text-lg text-center absolute top-32'>
-          something went wrong, try another time!
+        <p className='text-gray-100 w-full text-lg text-center absolute top-32'>
+          {error}
         </p>
       )}
       <Routes>

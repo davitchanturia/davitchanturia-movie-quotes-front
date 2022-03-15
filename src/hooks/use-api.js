@@ -22,8 +22,8 @@ const useApi = (type) => {
 
         if (type === 'getData') {
           const response = await apiClient.get(path);
-          dataCtx.onGetData(response.data);
 
+          dataCtx.onGetData(response.data);
           i18n.changeLanguage('en');
         }
         if (type === 'adminpanel') {
@@ -34,12 +34,20 @@ const useApi = (type) => {
         }
         setIsLoading(false);
       } catch (error) {
+        if (error.response.status === 500) {
+          setError('Something went wrong, try another time!');
+          setIsLoading(false);
+        }
         if (error.response.status === 401) {
           if (type === 'adminpanel') {
             navigate('/login');
           } else {
             setIsLoading(false);
           }
+        }
+        if (error.response.status === 403) {
+          setError(error.response.data.message);
+          setIsLoading(false);
         }
         if (error.response.status === 429) {
           navigate('/');
