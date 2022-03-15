@@ -74,13 +74,3 @@ const ConfirmModal = (props) => {
 };
 
 export default ConfirmModal;
-
-// const logoutPortal = () => {
-//   return (
-//     <>
-//       {ReactDOM.createPortal(<LogoutModal />, document.querySelector('#modal'))}
-//     </>
-//   );
-// };
-
-// export default logoutPortal;

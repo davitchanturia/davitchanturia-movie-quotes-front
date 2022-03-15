@@ -77,7 +77,7 @@ const MovieModal = (props) => {
                 error={errors.movieNameGeorgian?.message}
               />
 
-              <Buttons action='create' onCancel={props.onClose} />
+              <Buttons action='confirm' onCancel={props.onClose} />
               <p className='text-red-500 text-sm mt-1 h-2 transition-all duration-1000'>
                 {backError}
               </p>

@@ -132,7 +132,7 @@ const QuoteModal = (props) => {
                 )}
                 {check.Movies}
               </select>
-              <Buttons action='create' onCancel={props.onClose} />
+              <Buttons action='confirm' onCancel={props.onClose} />
               <ErrorMessage>{backError}</ErrorMessage>
             </div>
           </div>
