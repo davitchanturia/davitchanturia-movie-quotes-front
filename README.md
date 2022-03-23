@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+<h1 style="text-align:center;">Movie Quotes</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the Movie Quotes Application. you can see here random movie quotes with relevant images. application has only two pages, main with random quote and list page with all certain movie quotes. there is adminpanel for only admins. Movie QUotes application does not have registration page, admin creates using command line. 
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+* [Prerequisites](#req)
+* [Packages](#packages)
+* [Getting Started](#gettingStarted)
+* [API](#API)
 
-### `npm start`
+#
+<h2 id="req">Prerequisites:</h2>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<table>
+    <tr>
+        <td>*</td>
+        <td>npm 6.14.15</td>
+    </tr>
+</table>
 
-### `npm test`
+<h2 id="packages">packages:</h2>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<table>
+    <tr>
+        <td>*</td>
+        <td>tailwindcss 3.0.23</td>
+    </tr>
+    <tr>
+        <td>*</td>
+        <td>react-router-dom 6</td>
+    </tr>
+    <tr>
+        <td>*</td>
+        <td>axios</td>
+    </tr>
+    <tr>
+        <td>*</td>
+        <td>react-hook-form</td>
+    </tr>
+    <tr>
+        <td>*</td>
+        <td>i18next</td>
+    </tr>
+    <tr>
+        <td>*</td>
+        <td>react-i18next</td>
+    </tr>
+    <tr>
+        <td>*</td>
+        <td>i18next-browser-languagedetector</td>
+    </tr>
+    <tr>
+        <td>*</td>
+        <td>18next-http-backend</td>
+    </tr>
+</table>
 
-### `npm run build`
+<h2 id="gettingStarted">Getting Started</h2>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1\. First of all you need to clone Movie Quotes repository from github:
+```sh
+https://github.com/RedberryInternship/davitchanturia-movie-quotes-front.git
+```
+2\. Then navigate into the repository
+```sh
+cd davitchanturia-movie-quotes-front
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3\. Run the command to install all the dependencies
+```sh
+npm install
+```
+4\. Run the command to start the development server
+```sh
+npm start
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<h2 id="API">API</h2>
 
-### `npm run eject`
+This is application's frontend side. It uses laravel as backend, so to fully understand concerpts of whole application you can visit backend repository and read swagger documentation of this app.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+  1.Backend Repository - https://github.com/RedberryInternship/davitchanturia-movie-quotes
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+  2.Swagger Documentation - 
