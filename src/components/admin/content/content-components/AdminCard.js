@@ -21,12 +21,21 @@ const AdminCard = (props) => {
     }
   };
 
+  let cardImgPath;
+
+  if (props.movieOrQuote === 'Quotes') {
+    cardImgPath = `http://localhost:8000/storage/${props.info.thumbnail}`;
+  } else {
+    cardImgPath =
+      'https://images.unsplash.com/photo-1485846234645-a62644f84728?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1459&q=80';
+  }
+
   return (
     <div className='h-72 col-span-1 flex flex-col text-center bg-white rounded-lg shadow relative transition-all duration-1000'>
       <div className='flex-1 flex flex-col p-8'>
         <img
           className='w-32 h-32 flex-shrink-0 mx-auto rounded-full'
-          src='https://images.unsplash.com/photo-1485846234645-a62644f84728?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1459&q=80'
+          src={cardImgPath}
           alt=''
         />
         <h3 className='mt-6 capitalize text-gray-900 text-sm font-medium'>
