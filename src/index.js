@@ -6,9 +6,9 @@ import 'index.css';
 import App from './App';
 
 import 'i18n/i18n';
-import { AdminContextProvider } from 'store/admin-context';
-import { DataContextProvider } from 'store/data-context';
-import { ModalContextProvider } from 'store/modal-context';
+import { AdminContextProvider } from 'store/adminContext';
+import { DataContextProvider } from 'store/dataContext';
+import { ModalContextProvider } from 'store/modalContext';
 
 ReactDOM.render(
   <ModalContextProvider>

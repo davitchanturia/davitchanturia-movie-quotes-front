@@ -1,6 +1,6 @@
 import { useContext } from 'react';
-import AdminContext from 'store/admin-context';
-import useCrud from 'hooks/use-crud';
+import AdminContext from 'store/adminContext';
+import useCrud from 'hooks/useCrud';
 
 import Buttons from 'components/UI/form/Buttons';
 import Modal from 'components/UI/Modal';

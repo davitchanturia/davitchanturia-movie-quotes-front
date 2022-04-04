@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import ModalContext from 'store/modal-context';
+import ModalContext from 'store/modalContext';
 
 const AdminCard = (props) => {
   const modalCtx = useContext(ModalContext);
@@ -24,7 +24,7 @@ const AdminCard = (props) => {
   let cardImgPath;
 
   if (props.movieOrQuote === 'Quotes') {
-    cardImgPath = `http://localhost:8000/storage/${props.info.thumbnail}`;
+    cardImgPath = `${process.env.REACT_APP_BACKEND_ADDRESS}storage/${props.info.thumbnail}`;
   } else {
     cardImgPath =
       'https://images.unsplash.com/photo-1485846234645-a62644f84728?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1459&q=80';

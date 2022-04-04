@@ -7,8 +7,8 @@ import Main from 'pages/Main/Main';
 import AdminPanel from 'pages/Admin/AdminPanel';
 
 import Spinner from 'components/UI/Spinner';
-import useApi from 'hooks/use-api';
-import DataContext from 'store/data-context';
+import useApi from 'hooks/useApi';
+import DataContext from 'store/dataContext';
 import Login from 'pages/Login/Login';
 
 function App() {

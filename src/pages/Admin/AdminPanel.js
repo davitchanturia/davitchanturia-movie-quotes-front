@@ -4,7 +4,7 @@ import Data from 'pages/Admin/components/Data';
 import Navbar from 'pages/Admin/components/Navbar';
 import SideBar from 'pages/Admin/components/SideBar';
 import Spinner from 'components/UI/Spinner';
-import useApi from 'hooks/use-api';
+import useApi from 'hooks/useApi';
 
 const AdminPanel = () => {
   const navigate = useNavigate();

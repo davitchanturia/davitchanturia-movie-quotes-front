@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import AdminContext from 'store/admin-context';
+import AdminContext from 'store/adminContext';
 import Grid from 'pages/Admin/components/grid';
 import Welcome from 'pages/Admin/components/Welcome';
 

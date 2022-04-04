@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router';
-import apiClient from '../api/api';
+import apiClient from 'api/api';
 
 const useAuthCheck = (type) => {
   const [isLoading, setIsLoading] = useState(true);

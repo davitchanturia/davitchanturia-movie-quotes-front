@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import AdminContext from 'store/admin-context';
+import AdminContext from 'store/adminContext';
 import Element from 'pages/Admin/components/Element';
 
 const SideBar = () => {

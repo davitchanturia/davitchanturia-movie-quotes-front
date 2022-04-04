@@ -1,8 +1,8 @@
 import { useContext, useState } from 'react';
 
-import DataContext from 'store/data-context';
-import AdminContext from 'store/admin-context';
-import ModalContext from 'store/modal-context';
+import DataContext from 'store/dataContext';
+import AdminContext from 'store/adminContext';
+import ModalContext from 'store/modalContext';
 
 import AdminCard from 'pages/Admin/components/AdminCard';
 import CreateButton from 'pages/Admin/components/CreateButton';
@@ -29,7 +29,6 @@ const Grid = () => {
     data = dataCtx.allData.quotes;
   }
 
-  console.log(data);
   const onCloseHandler = () => {
     modalCtx.onChangeLogout(false);
     modalCtx.onChangeDelete(false);

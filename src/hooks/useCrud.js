@@ -1,10 +1,10 @@
 import { useCallback, useState } from 'react';
-import apiClient from '../api/api';
+import apiClient from 'api/api';
 import { useNavigate } from 'react-router';
 import { useContext } from 'react';
-import AdminContext from '../store/admin-context';
-import ModalContext from '../store/modal-context';
-import useApi from '../hooks/use-api';
+import AdminContext from 'store/adminContext';
+import ModalContext from 'store/modalContext';
+import useApi from 'hooks/useApi';
 
 const useCrud = (isLogout) => {
   const [backError, setBackError] = useState(null);
@@ -12,7 +12,7 @@ const useCrud = (isLogout) => {
   const navigate = useNavigate();
 
   const httpData = useApi('adminpanel');
-  const { isLoading, sendRequest } = httpData;
+  const { sendRequest } = httpData;
 
   const adminCtx = useContext(AdminContext);
   const modalCtx = useContext(ModalContext);
@@ -38,7 +38,6 @@ const useCrud = (isLogout) => {
             modalCtx.onChangeMovieCreate(false);
             modalCtx.onChangeQuoteCreate(false);
 
-            // for update data in adminpanel
             sendRequest('api/all-data');
             navigate('/admin');
           }
@@ -62,12 +61,9 @@ const useCrud = (isLogout) => {
           if (response.data === 200) {
             navigate('/admin');
             modalCtx.onChangeDelete(false);
-            // for update data in adminpanel
             sendRequest('api/all-data');
           }
-        } catch (error) {
-          // console.log(error.message);
-        }
+        } catch (error) {}
       })();
     },
     [navigate]

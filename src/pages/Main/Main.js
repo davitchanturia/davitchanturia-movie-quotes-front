@@ -6,7 +6,7 @@ import i18n from 'i18next';
 import Language from 'components/Language';
 
 const Main = (props) => {
-  const imagePath = `http://127.0.0.1:8000/storage/${props.data.quote.thumbnail}`;
+  const imagePath = `${process.env.REACT_APP_BACKEND_ADDRESS}storage/${props.data.quote.thumbnail}`;
 
   return (
     <section>

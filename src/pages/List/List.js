@@ -8,7 +8,7 @@ const List = (props) => {
 
   const allQuotes = props.data.allQuotes;
 
-  const imagePath = `http://127.0.0.1:8000/storage/${props.data.quote.thumbnail}`;
+  const imagePath = `${process.env.REACT_APP_BACKEND_ADDRESS}storage/${props.data.quote.thumbnail}`;
 
   return (
     <section>

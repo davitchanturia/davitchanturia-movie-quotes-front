@@ -1,9 +1,9 @@
 import { useTranslation } from 'react-i18next';
-import apiClient from '../api/api';
+import apiClient from 'api/api';
 import { useNavigate } from 'react-router';
 
 import { useCallback, useState, useContext } from 'react';
-import DataContext from '../store/data-context';
+import DataContext from 'store/dataContext';
 
 const useApi = (type) => {
   const [isLoading, setIsLoading] = useState(false);

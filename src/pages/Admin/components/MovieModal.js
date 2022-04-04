@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import useCrud from 'hooks/use-crud';
+import useCrud from 'hooks/useCrud';
 
 import Buttons from 'components/UI/form/Buttons';
 import Input from 'components/UI/form/Input';

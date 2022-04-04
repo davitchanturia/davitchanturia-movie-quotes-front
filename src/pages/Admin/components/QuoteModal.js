@@ -1,7 +1,7 @@
 import { useContext, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import DataContext from 'store/data-context';
-import useCrud from 'hooks/use-crud';
+import DataContext from 'store/dataContext';
+import useCrud from 'hooks/useCrud';
 
 import Buttons from 'components/UI/form/Buttons';
 import Input from 'components/UI/form/Input';
