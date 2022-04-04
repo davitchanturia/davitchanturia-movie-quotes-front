@@ -7,7 +7,7 @@ Welcome to the Movie Quotes Application. you can see here random movie quotes wi
 * [Prerequisites](#req)
 * [Packages](#packages)
 * [Getting Started](#gettingStarted)
-* [RESOURCES](#RESOURCES)
+* [Resources](#RESOURCES)
 
 #
 <h2 id="req">Prerequisites:</h2>
@@ -88,7 +88,7 @@ npm install
 ```sh
 npm start
 ```
-<h2 id="RESOURCES">RESOURCES</h2>
+<h2 id="RESOURCES">Resources</h2>
 
 This is application's frontend side. It uses laravel as backend, so to fully understand concerpts of whole application you can visit backend repository and read swagger documentation of this app.
 
