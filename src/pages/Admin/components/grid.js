@@ -1,14 +1,14 @@
 import { useContext, useState } from 'react';
 
-import DataContext from '../../../store/data-context';
-import AdminContext from '../../../store/admin-context';
-import ModalContext from '../../../store/modal-context';
+import DataContext from 'store/data-context';
+import AdminContext from 'store/admin-context';
+import ModalContext from 'store/modal-context';
 
-import AdminCard from './content-components/AdminCard';
-import CreateButton from './content-components/CreateButton';
-import ConfirmModal from '../modals/ConfirmModal';
-import MovieModal from '../modals/MovieModal';
-import QuoteModal from '../modals/QuoteModal';
+import AdminCard from 'pages/Admin/components/AdminCard';
+import CreateButton from 'pages/Admin/components/CreateButton';
+import ConfirmModal from 'pages/Admin/components/ConfirmModal';
+import MovieModal from 'pages/Admin/components/MovieModal';
+import QuoteModal from 'pages/Admin/components/QuoteModal';
 
 const Grid = () => {
   const [editData, setEditData] = useState({});

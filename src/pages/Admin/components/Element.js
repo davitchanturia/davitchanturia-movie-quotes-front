@@ -1,6 +1,6 @@
 import { useContext } from 'react';
-import AdminContext from '../../../store/admin-context';
-import ModalContext from '../../../store/modal-context';
+import AdminContext from 'store/admin-context';
+import ModalContext from 'store/modal-context';
 
 const Element = (props) => {
   const adminCtx = useContext(AdminContext);

@@ -1,5 +1,5 @@
 import React from 'react';
-import ErrorMessage from './ErrorMessage';
+import ErrorMessage from 'components/UI/form/ErrorMessage';
 
 const Input = ({ type, title, value, register, error }) => {
   return (

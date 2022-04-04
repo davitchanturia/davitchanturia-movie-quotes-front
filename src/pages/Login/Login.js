@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { useForm } from 'react-hook-form';
 
-import Input from './UI/form/Input';
-import Spinner from '../components/UI/Spinner';
-import apiClient from '../api/api';
-import useAuthCheck from '../hooks/use-authCheck';
-import ErrorMessage from './UI/form/ErrorMessage';
+import Input from 'components/UI/form/Input';
+import Spinner from 'components/UI/Spinner';
+import apiClient from 'api/api';
+import useAuthCheck from 'hooks/use-authCheck';
+import ErrorMessage from 'components/UI/form/ErrorMessage';
 
 const Login = () => {
   const [notFound, setNotFound] = useState('');
@@ -48,7 +48,6 @@ const Login = () => {
           }
         } catch (error) {
           setNotFound(error.message);
-          // console.log(error.message);
         }
       })();
     }

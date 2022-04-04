@@ -2,14 +2,14 @@ import { useEffect, useContext } from 'react';
 import { Route, Routes } from 'react-router';
 import { useTranslation } from 'react-i18next';
 
-import List from './pages/List';
-import Main from './pages/Main';
-import AdminPanel from './pages/AdminPanel';
+import List from 'pages/List/List';
+import Main from 'pages/Main/Main';
+import AdminPanel from 'pages/Admin/AdminPanel';
 
-import Spinner from './components/UI/Spinner';
-import useApi from './hooks/use-api';
-import DataContext from './store/data-context';
-import Login from './components/Login';
+import Spinner from 'components/UI/Spinner';
+import useApi from 'hooks/use-api';
+import DataContext from 'store/data-context';
+import Login from 'pages/Login/Login';
 
 function App() {
   const { t, i18n } = useTranslation();

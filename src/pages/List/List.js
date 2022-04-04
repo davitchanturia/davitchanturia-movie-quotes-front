@@ -1,7 +1,7 @@
 import { Trans, useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import Language from '../components/Language';
-import Card from '../components/UI/Card';
+import Language from 'components/Language';
+import Card from 'pages/List/components/Card';
 
 const List = (props) => {
   const { t, i18n } = useTranslation();

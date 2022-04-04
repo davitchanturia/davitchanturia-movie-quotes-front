@@ -1,5 +1,3 @@
-import ReactDOM from 'react-dom';
-
 const Modal = (props) => {
   return (
     <div
@@ -31,10 +29,3 @@ const Modal = (props) => {
 };
 
 export default Modal;
-// const modalPortal = () => {
-//   return (
-//     <>{ReactDOM.createPortal(<Modal />, document.querySelector('#modal'))}</>
-//   );
-// };
-
-// export default modalPortal;

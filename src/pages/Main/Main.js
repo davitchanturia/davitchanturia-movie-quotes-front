@@ -3,7 +3,7 @@ import { Trans } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import i18n from 'i18next';
 
-import Language from '../components/Language';
+import Language from 'components/Language';
 
 const Main = (props) => {
   const imagePath = `http://127.0.0.1:8000/storage/${props.data.quote.thumbnail}`;

@@ -1,13 +1,13 @@
 import { useContext, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import DataContext from '../../../store/data-context';
-import useCrud from '../../../hooks/use-crud';
+import DataContext from 'store/data-context';
+import useCrud from 'hooks/use-crud';
 
-import Buttons from '../../UI/form/Buttons';
-import Input from '../../UI/form/Input';
-import UploadInput from '../../UI/form/UploadInput';
-import Modal from '../../UI/Modal';
-import ErrorMessage from '../../UI/form/ErrorMessage';
+import Buttons from 'components/UI/form/Buttons';
+import Input from 'components/UI/form/Input';
+import UploadInput from 'components/UI/form/UploadInput';
+import Modal from 'components/UI/Modal';
+import ErrorMessage from 'components/UI/form/ErrorMessage';
 
 const QuoteModal = (props) => {
   const dataCtx = useContext(DataContext);

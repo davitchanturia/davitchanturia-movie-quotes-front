@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import ModalContext from '../../../../store/modal-context';
+import ModalContext from 'store/modal-context';
 
 const AdminCard = (props) => {
   const modalCtx = useContext(ModalContext);
