@@ -75,16 +75,11 @@ cd davitchanturia-movie-quotes-front
 ```sh
 cp .env.example .env
 ```
-4\. And now you should provide .env file all the necessary environment variables.
-```sh
-REACT_APP_BACKEND_ADDRESS=http://localhost:8000/
-```
-
-5\. Run the command to install all the dependencies
+4\. Run the command to install all the dependencies
 ```sh
 npm install
 ```
-6\. Run the command to start the development server
+5\. Run the command to start the development server
 ```sh
 npm start
 ```
