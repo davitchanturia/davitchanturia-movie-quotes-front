@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 
 import 'index.css';
-import App from './App';
+import App from 'App';
 
 import 'i18n/i18n';
 import { AdminContextProvider } from 'store/adminContext';

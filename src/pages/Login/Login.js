@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { useForm } from 'react-hook-form';
 
-import Input from 'components/UI/form/Input';
-import Spinner from 'components/UI/Spinner';
+import Input from 'components/Input';
+import Spinner from 'components/Spinner';
 import apiClient from 'api/api';
 import useAuthCheck from 'hooks/useAuthCheck';
-import ErrorMessage from 'components/UI/form/ErrorMessage';
+import ErrorMessage from 'components/ErrorMessage';
 
 const Login = () => {
   const [notFound, setNotFound] = useState('');

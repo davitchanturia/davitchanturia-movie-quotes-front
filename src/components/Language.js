@@ -1,4 +1,4 @@
-import Circle from 'components/UI/Circle';
+import Circle from 'components/Circle';
 
 const Language = () => {
   return (

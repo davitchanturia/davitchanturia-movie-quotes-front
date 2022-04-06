@@ -1,4 +1,4 @@
-import Add from 'components/UI/svg/Add';
+import Add from 'components/Add';
 
 const CreateButton = (props) => {
   return (

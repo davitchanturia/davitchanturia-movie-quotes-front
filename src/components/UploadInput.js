@@ -1,5 +1,5 @@
-import Upload from 'components/UI/svg/Upload';
-import ErrorMessage from 'components/UI/form/ErrorMessage';
+import Upload from 'components/Upload';
+import ErrorMessage from 'components/ErrorMessage';
 
 const UploadInput = (props) => {
   return (

@@ -3,11 +3,11 @@ import { useForm } from 'react-hook-form';
 import DataContext from 'store/dataContext';
 import useCrud from 'hooks/useCrud';
 
-import Buttons from 'components/UI/form/Buttons';
-import Input from 'components/UI/form/Input';
-import UploadInput from 'components/UI/form/UploadInput';
-import Modal from 'components/UI/Modal';
-import ErrorMessage from 'components/UI/form/ErrorMessage';
+import Buttons from 'components/Buttons';
+import Input from 'components/Input';
+import UploadInput from 'components/UploadInput';
+import Modal from 'components/Modal';
+import ErrorMessage from 'components/ErrorMessage';
 
 const QuoteModal = (props) => {
   const dataCtx = useContext(DataContext);

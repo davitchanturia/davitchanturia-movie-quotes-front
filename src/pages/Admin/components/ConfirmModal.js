@@ -2,10 +2,10 @@ import { useContext } from 'react';
 import AdminContext from 'store/adminContext';
 import useCrud from 'hooks/useCrud';
 
-import Buttons from 'components/UI/form/Buttons';
-import Modal from 'components/UI/Modal';
-import Warning from 'components/UI/svg/Warning';
-import Xclose from 'components/UI/svg/Xclose';
+import Buttons from 'components/Buttons';
+import Modal from 'components/Modal';
+import Warning from 'components/Warning';
+import Xclose from 'components/Xclose';
 
 const ConfirmModal = (props) => {
   const adminCtx = useContext(AdminContext);

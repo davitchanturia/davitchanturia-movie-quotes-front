@@ -6,7 +6,7 @@ import List from 'pages/List/List';
 import Main from 'pages/Main/Main';
 import AdminPanel from 'pages/Admin/AdminPanel';
 
-import Spinner from 'components/UI/Spinner';
+import Spinner from 'components/Spinner';
 import useApi from 'hooks/useApi';
 import DataContext from 'store/dataContext';
 import Login from 'pages/Login/Login';

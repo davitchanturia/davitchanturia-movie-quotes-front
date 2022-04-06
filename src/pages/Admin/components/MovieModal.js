@@ -2,9 +2,9 @@ import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import useCrud from 'hooks/useCrud';
 
-import Buttons from 'components/UI/form/Buttons';
-import Input from 'components/UI/form/Input';
-import Modal from 'components/UI/Modal';
+import Buttons from 'components/Buttons';
+import Input from 'components/Input';
+import Modal from 'components/Modal';
 
 const MovieModal = (props) => {
   const {
