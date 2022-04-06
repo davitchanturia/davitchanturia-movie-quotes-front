@@ -24,7 +24,6 @@ const useApi = (type) => {
           const response = await apiClient.get(path);
 
           dataCtx.onGetData(response.data);
-          i18n.changeLanguage('en');
         }
         if (type === 'adminpanel') {
           await apiClient.get('sanctum/csrf-cookie');
