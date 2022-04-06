@@ -8,8 +8,6 @@ const List = (props) => {
 
   const allQuotes = props.data.allQuotes;
 
-  const imagePath = `${process.env.REACT_APP_BACKEND_ADDRESS}storage/${props.data.quote.thumbnail}`;
-
   return (
     <section>
       <div className='mt-10 ml-10'>
@@ -25,7 +23,7 @@ const List = (props) => {
           <Card
             key={quote.id}
             title={quote.name[i18n.language]}
-            imageSrc={imagePath}
+            imageSrc={quote.thumbnail}
           />
         ))}
       </div>

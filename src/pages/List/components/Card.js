@@ -1,9 +1,11 @@
 const Card = (props) => {
+  const imagePath = `${process.env.REACT_APP_BACKEND_ADDRESS}storage/${props.imageSrc}`;
+
   return (
     <div className='bg-white mt-7 pb-4 rounded-lg'>
       <img
         className='w-full h-52 rounded-t-lg object-cover'
-        src={props.imageSrc}
+        src={imagePath}
         alt='quote img'
       />
 
