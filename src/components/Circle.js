@@ -4,6 +4,7 @@ const Circle = (props) => {
   const changeLanguageHandler = (event) => {
     event.preventDefault();
     i18n.changeLanguage(props.lang);
+    localStorage.setItem('language', props.lang);
   };
 
   const styles =

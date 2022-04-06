@@ -21,6 +21,13 @@ function App() {
 
   useEffect(() => {
     sendRequest('api/random-movie');
+
+    const activeLanguage = localStorage.getItem('language');
+    if (activeLanguage) {
+      i18n.changeLanguage(activeLanguage);
+    } else {
+      i18n.changeLanguage('en');
+    }
   }, [sendRequest]);
 
   let isEmpty = Object.entries(dataCtx.movie).length === 0;
